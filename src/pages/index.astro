@@ -1,0 +1,10 @@
+---
+// src/pages/index.astro
+import { getLangFromUrl } from '../i18n/utils';
+
+// Get the language from the URL or default to 'en'
+const lang = getLangFromUrl(Astro.url) || 'en';
+
+// Redirect to the language-specific page
+return Astro.redirect(`/${lang}`);
+---

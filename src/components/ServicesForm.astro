@@ -1,0 +1,40 @@
+---
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+    t: ReturnType<typeof useTranslations>;
+}
+
+const { t } = Astro.props;
+
+const services = [
+  { id: 'webdev', label: t('hero.services.webdev') },
+  { id: 'extensions', label: t('hero.services.extensions') },
+  { id: 'ecommerce', label: t('hero.services.ecommerce') },
+  { id: 'cms', label: t('hero.services.cms') },
+  { id: 'productivity', label: t('hero.services.productivity') },
+  { id: 'publishing', label: t('hero.services.publishing') },
+  { id: 'analytics', label: t('hero.services.analytics') },
+  { id: 'integration', label: t('hero.services.integration') },
+  { id: 'consulting', label: t('hero.services.consulting') },
+];
+---
+
+<div id="services-form-container" class="relative bg-gray-100 dark:bg-slate-800 border border-transparent dark:border-dark-border rounded-lg shadow-lg p-8 w-full mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-6 text-slate-900 dark:text-slate-100">{t('hero.form_title')}</h2>
+    
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      {services.map(service => (
+        <label for={service.id} class="flex items-center space-x-2 p-3 rounded-lg bg-white border border-light-border dark:border-dark-border hover:bg-slate-50 dark:hover:bg-dark-bg cursor-pointer transition-colors">
+          <input type="checkbox" id={service.id} name="services" value={service.id} class="service-checkbox rounded text-primary focus:ring-primary" />
+          <span class="text-slate-700 dark:text-slate-300 font-semibold text-sm">{service.label}</span>
+        </label>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <button id="open-modal-button" type="button" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg transition-colors w-full sm:w-auto cursor-pointer">
+        {t('hero.cta_button')}
+      </button>
+    </div>
+</div>

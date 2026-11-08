@@ -1,0 +1,80 @@
+---
+import IconTablerBolt from '~icons/tabler/bolt';
+import IconTablerShieldCheck from '~icons/tabler/shield-check';
+import IconTablerCpu from '~icons/tabler/cpu';
+import IconTablerHeart from '~icons/tabler/heart';
+import IconTablerDeviceDesktop from '~icons/tabler/device-desktop';
+
+export interface Props {
+    t: (key: string) => any; 
+}
+
+const { t } = Astro.props as Props;
+const why_built = t('why_built');
+const values = t('values');
+const stats = t('stats');
+---
+
+<section class="py-24 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-8 italic">{why_built.title}</h2>
+                <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+                    {why_built.paragraph1}
+                </p>
+                <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+                    {why_built.paragraph2}
+                </p>
+                <div class="grid grid-cols-2 gap-6 mt-12">
+                    <div class="space-y-2">
+                        <div class="text-[#FF6B4A]"><IconTablerBolt class="w-8 h-8" /></div>
+                        <h4 class="font-bold">{values.simple.title}</h4>
+                        <p class="text-sm text-slate-400">{values.simple.subtitle}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="text-[#FF6B4A]"><IconTablerShieldCheck class="w-8 h-8" /></div>
+                        <h4 class="font-bold">{values.private.title}</h4>
+                        <p class="text-sm text-slate-400">{values.private.subtitle}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="text-[#FF6B4A]"><IconTablerCpu class="w-8 h-8" /></div>
+                        <h4 class="font-bold">{values.fast.title}</h4>
+                        <p class="text-sm text-slate-400">{values.fast.subtitle}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="text-[#FF6B4A]"><IconTablerHeart class="w-8 h-8" /></div>
+                        <h4 class="font-bold">{values.accessible.title}</h4>
+                        <p class="text-sm text-slate-400">{values.accessible.subtitle}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700">
+                <h3 class="text-2xl font-bold mb-8 text-center">{why_built.stats_title}</h3>
+                <div class="space-y-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-blue-900/50 p-3 rounded-xl"><IconTablerDeviceDesktop class="w-6 h-6 text-blue-400" /></div>
+                            <span>{stats.stores}</span>
+                        </div>
+                        <span class="font-bold text-xl">1/3</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-orange-900/50 p-3 rounded-xl"><IconTablerBolt class="w-6 h-6 text-orange-400" /></div>
+                            <span>{stats.coverage}</span>
+                        </div>
+                        <span class="font-bold text-xl">70%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-900/50 p-3 rounded-xl"><IconTablerShieldCheck class="w-6 h-6 text-green-400" /></div>
+                            <span>{stats.privacy}</span>
+                        </div>
+                        <span class="font-bold text-xl text-green-400">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

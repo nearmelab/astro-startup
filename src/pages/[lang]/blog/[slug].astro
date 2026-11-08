@@ -1,0 +1,71 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { languages } from '@/i18n/ui';
+import SocialShare from '@/components/SocialShare.astro';
+
+export async function getStaticPaths() {
+    const enPosts = await Astro.glob('../../../content/blog/en/*.mdx');
+    const arPosts = await Astro.glob('../../../content/blog/ar/*.mdx');
+    const paths = [];
+
+    for (const post of enPosts) {
+        const slug = post.file.split('/').pop().replace(/\.mdx?$/, '');
+        paths.push({ params: { lang: 'en', slug }, props: { post } });
+    }
+
+    for (const post of arPosts) {
+        const slug = post.file.split('/').pop().replace(/\.mdx?$/, '');
+        paths.push({ params: { lang: 'ar', slug }, props: { post } });
+    }
+
+    return paths;
+}
+
+const { lang, slug } = Astro.params;
+const { post } = Astro.props;
+const t = useTranslations(lang);
+
+const { Content, frontmatter } = post;
+
+const postImage = frontmatter.image;
+const postUrl = Astro.url.href;
+---
+
+<DefaultLayout
+    title={frontmatter.title}
+    description={frontmatter.excerpt}
+    image={postImage}
+    dir={lang === 'ar' ? 'rtl' : 'ltr'}
+>
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-x-12">
+            
+            <article class="lg:col-span-9">
+                <div class="mb-8">
+                    <img src={postImage} alt={frontmatter.title} class="w-full h-auto shadow-lg" />
+                </div>
+
+                <header class="text-center mb-12">
+                    <p class="text-base font-semibold text-primary tracking-wide uppercase">{frontmatter.category}</p>
+                    <h1 class="mt-2 text-4xl font-extrabold text-dark-text dark:text-light-text tracking-tight sm:text-5xl">{frontmatter.title}</h1>
+                    <p class="mt-4 max-w-2xl mx-auto text-xl text-medium-text-light dark:text-medium-text">{frontmatter.excerpt}</p>
+                    <div class="mt-6 text-sm text-medium-text-light dark:text-medium-text">
+                        <time datetime={new Date(frontmatter.date).toISOString()}>
+                            {new Date(frontmatter.date).toLocaleDateString(lang === 'ar' ? 'ar-MA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </time>
+                    </div>
+                </header>
+
+                <div class="prose prose-lg dark:prose-invert mx-auto">
+                    <Content />
+                </div>
+            </article>
+
+            <aside class="lg:col-span-3 lg:pt-24">
+                <SocialShare url={postUrl} title={frontmatter.title} />
+            </aside>
+
+        </div>
+    </div>
+</DefaultLayout>

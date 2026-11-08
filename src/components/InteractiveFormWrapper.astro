@@ -1,0 +1,38 @@
+---
+import ServicesForm from './ServicesForm.astro';
+import ContactModal from './ContactModal.astro';
+import FormManager from './FormManager.tsx';
+import { useTranslations } from '@/i18n/utils';
+import { actions, isInputError } from 'astro:actions';
+
+export interface Props {
+    t: ReturnType<typeof useTranslations>;
+    lang: string;
+}
+
+const { t, lang } = Astro.props as Props;
+
+// ✅ Get action result here in the parent
+const result = await Astro.getActionResult(actions.email.send);
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
+---
+
+<div>
+    <ServicesForm t={t} />
+    
+    <!-- Pass result and errors as props -->
+    <ContactModal 
+        t={t} 
+        lang={lang} 
+        result={result}
+        inputErrors={inputErrors}
+    />
+    
+    <!-- Pass data to client component -->
+    <FormManager 
+        client:load 
+        initialResult={result ? JSON.parse(JSON.stringify(result)) : null}
+        initialErrors={inputErrors ? JSON.parse(JSON.stringify(inputErrors)) : {}}
+        lang={lang}
+    />
+</div>

@@ -1,0 +1,76 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { languages } from '@/i18n/ui';
+import ZohoContactForm from '../../components/ZohoContactForm.astro';
+import IconMail from '~icons/tabler/mail';
+import IconTwitter from '~icons/tabler/brand-twitter';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map(lang => ({
+    params: { lang: lang as keyof typeof languages }
+  }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(Astro);
+
+const supportPage = t('support_page');
+const footer = t('footer');
+---
+
+<DefaultLayout title={supportPage.meta_title} description={supportPage.meta_description} image="/placeholders/tech-innovators.jpeg" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+    <div class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold mb-6 text-slate-900 dark:text-slate-100">{supportPage.title}</h1>
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{supportPage.subtitle}</p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-12 items-start">
+            <div class="lg:col-span-2 space-y-8">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">{supportPage.faq.title}</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-light-card dark:bg-dark-card p-6 rounded-2xl border border-light-border dark:border-dark-border shadow-sm">
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">{supportPage.faq.item1.question}</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">{supportPage.faq.item1.answer}</p>
+                    </div>
+                    <div class="bg-light-card dark:bg-dark-card p-6 rounded-2xl border border-light-border dark:border-dark-border shadow-sm">
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">{supportPage.faq.item2.question}</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">{supportPage.faq.item2.answer}</p>
+                    </div>
+                    <div class="bg-light-card dark:bg-dark-card p-6 rounded-2xl border border-light-border dark:border-dark-border shadow-sm">
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">{supportPage.faq.item3.question}</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">{supportPage.faq.item3.answer}</p>
+                    </div>
+                </div>
+
+                <div class="bg-light-card dark:bg-dark-card p-8 rounded-3xl shadow-lg border-light-border dark:border-dark-border">
+                    <h3 class="text-xl font-bold mb-6 text-slate-900 dark:text-slate-100">{supportPage.indie_support.title}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
+                        {supportPage.indie_support.description}
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 text-slate-600 dark:text-slate-300">
+                            <IconMail class="w-5 h-5 text-primary" />
+                            <span class="text-sm">{footer.contact_email}</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-slate-600 dark:text-slate-300">
+                            <IconTwitter class="w-5 h-5 text-primary" />
+                            <span class="text-sm">@NearMeLab</span>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-xs text-slate-500 dark:text-slate-400 italic">{supportPage.indie_support.response_time}</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">{supportPage.contact_form.title}</h2>
+                    <p class="text-slate-600 dark:text-slate-400">{supportPage.contact_form.subtitle}</p>
+                </div>
+                <ZohoContactForm />
+            </div>
+        </div>
+    </div>
+</DefaultLayout>

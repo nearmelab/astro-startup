@@ -1,0 +1,126 @@
+---
+import testimonials from '../data/testimonials.json';
+import IconChevronLeft from '~icons/tabler/chevron-left';
+import IconChevronRight from '~icons/tabler/chevron-right';
+import { getLangFromUrl } from '../i18n/utils';
+
+export interface Props {
+    t: (key: string) => any;
+}
+
+const { t } = Astro.props as Props;
+
+const lang = getLangFromUrl(Astro.url);
+const isRTL = lang === 'ar';
+---
+
+<section class="bg-stone-900 py-20 sm:py-28" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <p class="font-bold uppercase text-primary">{t('testimonials.eyebrow')}</p>
+        <h2 class="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            {t('testimonials.title')}
+        </h2>
+        <div class="mt-6 flex justify-center">
+            <div class="h-1 w-20 rounded-full bg-primary"></div>
+        </div>
+    </div>
+
+    <div class="mt-16 swiper testimonial-swiper mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative">
+        <div class="swiper-wrapper">
+            {testimonials.map((testimonial) => (
+                <div class="swiper-slide">
+                    <div class="flex flex-col items-center text-center">
+                         <div class="text-secondary text-3xl mb-4 flex gap-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <blockquote class="max-w-2xl mx-auto">
+                            <p class="text-xl leading-relaxed text-slate-300">“{testimonial.quote}”</p>
+                        </blockquote>
+                        <div class={isRTL ? 'mt-8 flex items-center flex-row-reverse' : 'mt-8 flex items-center'}>
+                            <div class="avatar">
+                                <div class="w-12 rounded-full">
+                                    <img src={testimonial.image} alt={testimonial.name} />
+                                </div>
+                            </div>
+                            <div class={isRTL ? 'mr-4 text-right' : 'ml-4 text-left'}>
+                                <a href={testimonial.website} target="_blank" rel="noopener noreferrer" class="font-bold text-white hover:underline">{testimonial.name}</a>
+                                <p class="text-sm text-slate-400">{testimonial.title}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+        <div class={isRTL ? 'swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white p-2 rounded-full cursor-pointer hover:bg-white/10' : 'swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white p-2 rounded-full cursor-pointer hover:bg-white/10'}>
+            <IconChevronLeft class="w-6 h-6" />
+        </div>
+        <div class={isRTL ? 'swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 text-white p-2 rounded-full cursor-pointer hover:bg-white/10' : 'swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 text-white p-2 rounded-full cursor-pointer hover:bg-white/10'}>
+            <IconChevronRight class="w-6 h-6" />
+        </div>
+
+        <div class="swiper-pagination !relative !bottom-[-30px]"></div>
+    </div>
+</section>
+
+<style is:global>
+    @import 'swiper/css/bundle';
+
+    .testimonial-swiper .swiper-pagination-bullet {
+        background: white;
+        opacity: 0.7;
+    }
+    .testimonial-swiper .swiper-pagination-bullet-active {
+        background: hsl(var(--p));
+        opacity: 1;
+    }
+    
+    /* RTL specific styles */
+    .rtl .swiper-button-next {
+        left: 10px;
+        right: auto;
+    }
+    
+    .rtl .swiper-button-prev {
+        right: 10px;
+        left: auto;
+    }
+    
+    .rtl .text-left {
+        text-align: right;
+    }
+</style>
+
+<script>
+    import Swiper from "swiper/bundle";
+
+    function initSwiper() {
+        const swipers = document.querySelectorAll('.testimonial-swiper');
+        if (swipers.length > 0) {
+            const isRTL = document.querySelector('[dir="rtl"]') !== null;
+            
+            const swiper = new Swiper('.testimonial-swiper', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: isRTL ? '.swiper-button-prev' : '.swiper-button-next',
+                    prevEl: isRTL ? '.swiper-button-next' : '.swiper-button-prev',
+                },
+                // RTL support
+                rtl: isRTL,
+            });
+        }
+    }
+
+    document.addEventListener("astro:page-load", initSwiper);
+    initSwiper();
+</script>

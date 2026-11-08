@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "vimeoId": "1007374996",
+      "title": "Total Pages Card",
+      "description": "Gain a quick and clear overview of the total number of pages in your Umbraco site. With Total Pages card, monitor your content structure effortlessly, ensuring you stay on top of your site’s growth and organization. Perfect for content managers and developers alike to manage page counts with ease.",
+      "client": "Astroboard",
+      "thumbnailUrl": "https://i.vimeocdn.com/video/1924237203-d821801c45c04bf2a90b57f9c4ca19ec0f3b99e69797014d1f962d69f60d161f-d_295x166?region=us"
+    },
+    {
+      "id": 2,
+      "vimeoId": "1008525347",
+      "title": "Total Medias Card",
+      "description": "Dive into the exciting features of the Total Medias card. Filter data by time frame, track asset growth, view total media assets in one place, visualize trends over time, and zoom into specific periods for deeper analysis. Perfect for those looking to boost productivity and make informed decisions with their media assets.",
+      "client": "Astroboard",
+      "thumbnailUrl": "https://i.vimeocdn.com/video/1925572097-5616f7e33700e774353f999613ef0873c5dd907e54cc50a961d1170ee9e24f15-d_295x166?region=us"
+    },
+    {
+      "id": 3,
+      "vimeoId": "1008786992",
+      "title": "Unlock Member Insights",
+      "description": "Looking to track user activity on your Umbraco-powered forum, blog, or website? Astroboard is the ultimate dashboard package that enhances your backoffice with detailed member analytics. Get a clear view of your total users, analyze growth, and monitor trends over time—all with customizable time frames and easy-to-read charts.",
+      "client": "Astroboard",
+      "thumbnailUrl": "https://i.vimeocdn.com/video/1925874944-4639249df0c14eeddc5ac4c914df9fb5691ecea546aec1403b3fe3c6b55b8cf2-d_295x166?region=us"
+    },
+    {
+      "id": 4,
+      "vimeoId": "1011597980",
+      "title": "Revolutionizing Media Insights",
+      "description": "Unlock the power of media management with Astroboard, the innovative Umbraco dashboard package designed to enhance your workflow. Discover how the Assets Stats card provides real-time insights into your assets, showing exactly how many items you've created over a selected period.",
+      "client": "Astroboard",
+      "thumbnailUrl": "https://i.vimeocdn.com/video/1929193268-852f2dfadcab3c57608e03cdb65b11d2ec92bfa063f6bceddbd2a009b67dbdea-d_295x166?region=us"
+    },
+    {
+      "id": 5,
+      "vimeoId": "1010201728",
+      "title": "Master Umbraco Site Management",
+      "description": "Explore Astroboard, the new dashboard for Umbraco users! Effortlessly track user activities, including editors, developers, and translators, and monitor page statuses—created, updated, deleted, or published. See how Astroboard provides real-time insights and streamlines your content management.",
+      "client": "Astroboard",
+      "thumbnailUrl": "https://i.vimeocdn.com/video/1927522038-87b50c40d568359c5accef45aaff39715c00dd578790dba295830717de128c82-d_295x166?region=us"
+    },
+    {
+        "id": 6,
+        "vimeoId": "1009141268",
+        "title": "Get Total Groups in Umbraco CMS | Astroboard",
+        "description": "Comprehensive Umbraco Groups List Statistics:\n====================================\n\u221a Select specific time frames for analysis\n\u221a Visualize group trends over time\n\u221a Monitor rate of changes in groups\n\u221a See the overall number of groups",
+        "client": "Astroboard",
+        "thumbnailUrl": "https://i.vimeocdn.com/video/1926287095-f92805bd20f7c148c51981dcd7aced680b7fdc86df8977f0f2b17640f37ca693-d_295x166?region=us"
+      },
+      {
+        "id": 7,
+        "vimeoId": "1013062774",
+        "title": "Astroboard: Visualizing Page Stats with Interactive Donut Charts in Umbraco",
+        "description": "Discover how Astroboard enhances your Umbraco dashboard experience with the Pages Stats Card. This video showcases our interactive donut chart, providing clear visual insights into your content management. Easily view the percentages of published, unpublished, draft, and deleted pages, and get detailed counts by hovering over each section. Learn how to leverage this powerful tool to optimize your content strategy and improve efficiency in your projects.",
+        "client": "Astroboard",
+        "thumbnailUrl": "https://i.vimeocdn.com/video/1930966722-a5242dcf4b281bfe7473c867bdbf9edf132b57175d20cef7b5aba0570d825a8c-d_295x166?region=us"
+      },
+      {
+        "id": 8,
+        "vimeoId": "1013463388",
+        "title": "Boost Your Umbraco Dashboard with Effortless Data Export",
+        "description": "In this video, explore how to enhance your Umbraco CMS dashboard. Learn how to easily filter your Members table by period and expert, and seamlessly export data to Excel and CSV formats.",
+        "client": "Astroboard",
+        "thumbnailUrl": "https://i.vimeocdn.com/video/1931454696-55f093183efae9f3a40e6617eb8d0f873226023570e19e25bb090472bed11c26-d_295x166?region=us"
+      },
+      {
+        "id": 9,
+        "vimeoId": "1014409311",
+        "title": "Trends in Publishing and Collaboration | Astroboard dashboard",
+        "description": "Dive into the latest content dashboard analysis! This video showcases a detailed line chart tracking published, unpublished, and deleted content over time. We'll explore daily and total growth metrics, along with insights into collaboration trends compared to the previous period. Gain a clearer understanding of your content strategy and discover how to optimize your publishing process for better results. Don't miss out on key takeaways to enhance your team’s performance!",
+        "client": "Astroboard",
+        "thumbnailUrl": "https://i.vimeocdn.com/video/1932489639-0e0e3164357fe125eed56c0c0b295960c5d34589f9e4677faca14fe07ba04ec3-d_295x166?region=us"
+      }
+]

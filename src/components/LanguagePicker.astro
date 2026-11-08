@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+import { languages, defaultLang } from '../i18n/ui';
+
+const currentLang = getLangFromUrl(Astro.url);
+
+function getTranslatedPath(targetLang: keyof typeof languages) {
+    const pathSegments = Astro.url.pathname.split('/').filter(segment => segment);
+
+    // Remove the current language segment if it exists
+    if (pathSegments.length > 0 && pathSegments[0] in languages) {
+        pathSegments.shift();
+    }
+
+    // Add the new language segment if it's not the default language
+    if (targetLang !== defaultLang) {
+        pathSegments.unshift(targetLang);
+    }
+
+    return '/' + pathSegments.join('/');
+}
+---
+
+<div class="relative">
+    <select id="language-switcher" aria-label="Language selector" class="appearance-none w-full bg-transparent text-medium-text-light dark:text-medium-text py-2 pl-3 pr-8 rounded-md leading-tight focus:outline-none cursor-pointer hover:text-dark-text dark:hover:text-light-text">
+        {
+            Object.entries(languages).map(([lang, label]) => (
+                <option
+                    value={getTranslatedPath(lang as keyof typeof languages)}
+                    selected={lang === currentLang}
+                    class="bg-light-card dark:bg-dark-card text-dark-text dark:text-light-text"
+                >
+                    {label}
+                </option>
+            ))
+        }
+    </select>
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-medium-text-light dark:text-medium-text">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+    </div>
+</div>
+
+<script is:inline>
+    const langSwitcher = document.getElementById('language-switcher');
+    if (langSwitcher) {
+        langSwitcher.addEventListener('change', function() {
+            window.location.href = this.value;
+        });
+    }
+</script>

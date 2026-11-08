@@ -1,0 +1,505 @@
+{
+  "header": {
+    "brand": "NearMeLab",
+    "home": "Home",
+    "services": {
+      "title": "Services",
+      "items": [
+        {
+          "title": "Vendure E-commerce",
+          "description": "High-performance headless e-commerce.",
+          "path": "/services/vendure-ecommerce"
+        },
+        {
+          "title": "Astro Development",
+          "description": "Build lightning-fast marketing sites.",
+          "path": "/services/astro-development"
+        },
+        {
+          "title": "Umbraco Solutions",
+          "description": "Flexible, enterprise-grade content management.",
+          "path": "/services/umbraco-solutions"
+        }
+      ]
+    },
+    "about": "About Us",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "footer": {
+    "copyright": "NearMeLab. All rights reserved."
+  },
+  "hero": {
+    "headline": "We Build Enterprise-Grade Applications",
+    "subheading": "Specializing in robust packages and custom solutions using Vendure, Astro, and the IBM Carbon Design System for scalability and performance.",
+    "ctaProject": "Start a Project",
+    "ctaWork": "See Our Work"
+  },
+  "services": {
+    "title": "Our Core Services",
+    "description": "We deliver high-quality digital products engineered for success, from e-commerce platforms to custom enterprise applications.",
+    "cards": [
+      {
+        "title": "Headless E-commerce",
+        "description": "Blazing-fast, scalable online stores using Vendure and modern frontend frameworks."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Enhancing speed and reliability for existing applications to improve user experience and conversions."
+      },
+      {
+        "title": "Custom Packages",
+        "description": "Developing bespoke software packages and libraries tailored to your specific business logic."
+      },
+      {
+        "title": "UI/UX with Carbon DS",
+        "description": "Designing and implementing intuitive, accessible interfaces with IBM's Carbon Design System."
+      }
+    ]
+  },
+  "trust": {
+    "title": "Proven Results, Trusted by Leaders",
+    "description": "Our commitment to quality and performance has earned us the trust of growing startups and established enterprises.",
+    "metrics": [
+      {
+        "value": "40%",
+        "label": "Faster Load Times"
+      },
+      {
+        "value": "300%",
+        "label": "Increase in Traffic"
+      },
+      {
+        "value": "99.9%",
+        "label": "Uptime Guarantee"
+      }
+    ],
+    "trustedBy": "Trusted By",
+    "techStack": "Our Technology Stack"
+  },
+  "portfolio": {
+    "title": "Our Recent Work",
+    "description": "A selection of projects that showcase our expertise in creating powerful, scalable, and visually appealing digital solutions.",
+    "projects": [
+      {
+        "slug": "vendure-commerce-hub",
+        "title": "Vendure Commerce Hub",
+        "description": "A headless e-commerce platform for a leading electronics retailer, improving performance by 50%.",
+        "tags": ["Vendure", "Next.js", "GraphQL"],
+        "service": "E-commerce",
+        "industry": "Retail",
+        "budget": "10k-25k",
+        "timeline": "3 Months",
+        "results": "50% Perf. Increase",
+        "techStack": ["Vendure", "Next.js", "GraphQL", "TypeScript"],
+        "problem": "A major electronics retailer was struggling with a slow, monolithic e-commerce platform that couldn't handle their traffic spikes during sales events. The user experience was poor, and conversion rates were declining.",
+        "solution": "We migrated their entire operation to a headless architecture using Vendure for the backend and Next.js for the frontend. This involved a complete data migration, custom plugin development for their specific inventory system, and a new, high-performance storefront design.",
+        "resultDetails": "The new platform resulted in a 50% increase in Lighthouse performance scores, a 20% increase in conversion rates, and zero downtime during the subsequent Black Friday sale. The marketing team is now able to launch new landing pages and promotions independently, without developer intervention."
+      },
+      {
+        "slug": "astro-marketing-site",
+        "title": "Astro Marketing Site",
+        "description": "A content-driven marketing website for a SaaS company, achieving perfect Lighthouse scores.",
+        "tags": ["Astro", "TailwindCSS", "Contentful"],
+        "service": "Astro",
+        "industry": "SaaS",
+        "budget": "5k-10k",
+        "timeline": "6 Weeks",
+        "results": "100 Lighthouse Score",
+        "techStack": ["Astro", "TailwindCSS", "Contentful", "Sanity"],
+        "problem": "A B2B SaaS company's marketing site was built on WordPress and had become slow and difficult to maintain. They needed a faster, more secure, and developer-friendly solution to improve their SEO and lead generation.",
+        "solution": "We rebuilt the website from the ground up using Astro for its unparalleled performance. We integrated Contentful as a headless CMS, allowing their marketing team to easily manage content. The new design was clean, modern, and fully optimized for all devices.",
+        "resultDetails": "The new Astro site consistently achieves perfect 100 Lighthouse scores for performance, accessibility, and SEO. Organic search traffic increased by 40% within three months of launch, and the development team now spends 80% less time on site maintenance."
+      },
+      {
+        "slug": "umbraco-corporate-portal",
+        "title": "Umbraco Corporate Portal",
+        "description": "A multi-language corporate portal for a global firm, simplifying content management.",
+        "tags": ["Umbraco", ".NET", "Azure"],
+        "service": "Umbraco",
+        "industry": "Corporate",
+        "budget": "25k+",
+        "timeline": "5 Months",
+        "results": "Multi-language Support",
+        "techStack": ["Umbraco", ".NET Core", "Azure", "React"],
+        "problem": "A multinational corporation needed to consolidate dozens of regional websites into a single, cohesive corporate portal. Their existing systems were fragmented, making brand consistency and content updates a nightmare.",
+        "solution": "We designed and implemented a multi-site, multi-language solution using Umbraco CMS. A core set of templates and components were developed to ensure brand consistency, while giving regional editors the flexibility they needed. The entire solution was deployed on a scalable Azure infrastructure.",
+        "resultDetails": "The new portal now serves 15 different languages and 30 regional markets from a single Umbraco instance. The time required for content editors to publish updates was reduced by an average of 60%. The centralized platform has significantly improved brand cohesion and operational efficiency."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Have a project in mind?",
+    "description": "Let's build something amazing together. Reach out to us to discuss your ideas and get a free consultation.",
+    "button": "Get in Touch"
+  },
+  "blog": {
+    "title": "Insights & Articles",
+    "description": "Explore our thoughts on e-commerce, technology, and design.",
+    "backToBlog": "Back to Blog",
+    "postNotFound": "Post Not Found",
+    "posts": [
+      {
+        "slug": "why-headless-commerce",
+        "title": "Why Headless Commerce is the Future of E-commerce",
+        "author": "Admin",
+        "date": "July 15, 2024",
+        "category": "E-commerce",
+        "excerpt": "Discover the key advantages of headless architecture and how it can revolutionize your online business with unparalleled flexibility and performance.",
+        "content": [
+          "In the ever-evolving landscape of digital commerce, businesses are constantly seeking ways to gain a competitive edge. One of the most significant shifts in recent years has been the move towards headless commerce. Unlike traditional, monolithic e-commerce platforms, headless architecture decouples the frontend presentation layer from the backend commerce functionality. This separation offers unprecedented flexibility, allowing businesses to create unique, content-rich shopping experiences across any channel or device.",
+          "The primary benefit of going headless is speed. By using modern frontend frameworks like Next.js or Astro, you can build blazingly fast websites that customers love. This not only improves user experience but also has a significant impact on SEO and conversion rates. Furthermore, headless systems are inherently more scalable and secure. The backend can be scaled independently of the frontend, and the reduced attack surface makes it less vulnerable to common threats. With a headless approach, you are no longer constrained by the limitations of a single platform, empowering you to innovate and adapt to market changes with agility."
+        ]
+      },
+      {
+        "slug": "choosing-the-right-tech-stack",
+        "title": "How to Choose the Right Tech Stack for Your Project",
+        "author": "Admin",
+        "date": "July 8, 2024",
+        "category": "Technical",
+        "excerpt": "A deep dive into the factors you should consider when selecting the technologies for your next big project, from scalability to team expertise.",
+        "content": [
+          "Choosing the right technology stack is one of the most critical decisions you'll make when starting a new project. The technologies you select will not only determine the performance and scalability of your application but also impact development speed, cost, and your ability to hire talent. A well-chosen stack aligns with your business goals, project requirements, and the long-term vision for your product.",
+          "When evaluating options, consider factors like scalability, community support, and the existing expertise within your team. For example, a startup aiming for rapid growth might prioritize a stack known for its scalability, like one built on Node.js and React. On the other hand, a content-heavy site might benefit more from a framework like Astro or a CMS-friendly solution like Umbraco. It's crucial to balance the allure of trendy technologies with the practical needs of your project. A thorough analysis at the outset will save you countless hours and resources down the line, setting you up for a successful launch and sustainable growth."
+        ]
+      },
+      {
+        "slug": "astro-for-performance",
+        "title": "Achieving Perfect Lighthouse Scores with Astro",
+        "author": "Admin",
+        "date": "July 22, 2024",
+        "category": "Astro",
+        "excerpt": "A step-by-step guide on how we leverage Astro's unique 'island architecture' to build some of the fastest websites on the planet.",
+        "content": ["Content for this post goes here."]
+      },
+      {
+        "slug": "umbraco-vs-wordpress",
+        "title": "Umbraco vs. WordPress: A Developer's Perspective",
+        "author": "Admin",
+        "date": "July 1, 2024",
+        "category": "Umbraco",
+        "excerpt": "While WordPress is ubiquitous, Umbraco offers a level of flexibility and developer freedom that makes it a superior choice for complex, content-driven websites.",
+        "content": ["Content for this post goes here."]
+      }
+    ]
+  },
+  "vendurePage": {
+    "hero": {
+      "title": "Build High-Performance E-commerce with Vendure",
+      "subtitle": "Leverage the power of a modern, headless, GraphQL-first e-commerce framework to create blazingly fast and scalable online stores.",
+      "cta": "Get a Quote"
+    },
+    "whyVendure": {
+      "title": "Why Choose Vendure?",
+      "subtitle": "Vendure provides the developer-friendly flexibility of a headless framework with the comprehensive features you need to run a successful business.",
+      "tableTitle": "Feature Comparison",
+      "features": [
+        "Architecture", "Customization", "API", "Performance", "Tech Stack", "Pricing Model"
+      ],
+      "competitors": ["Vendure", "Shopify", "WooCommerce"],
+      "comparison": [
+        ["Headless", "Monolithic", "Monolithic (Plugin-based)"],
+        ["Highly Extensible", "Limited by Apps", "Limited by Plugins"],
+        ["GraphQL Native", "REST & GraphQL", "REST (Primarily)"],
+        ["Excellent", "Good", "Variable"],
+        ["Modern (TypeScript, Node.js)", "Ruby on Rails", "PHP"],
+        ["Open-source", "Subscription", "Open-source"]
+      ]
+    },
+    "packages": {
+      "title": "Our Packages",
+      "subtitle": "Choose a package that fits your business needs, from startups to large enterprises.",
+      "popular": "Most Popular",
+      "items": [
+        {
+          "name": "Starter Pack",
+          "price": "€3,500",
+          "description": "Perfect for startups and small businesses testing the waters of headless commerce.",
+          "features": ["Basic Vendure Setup", "Standard Theme Customization", "5 Core Plugins", "Deployment Assistance"],
+          "cta": "Get Started"
+        },
+        {
+          "name": "Professional Pack",
+          "price": "€7,500",
+          "description": "Ideal for growing businesses that need a robust, scalable, and custom solution.",
+          "features": ["Advanced Vendure Setup", "Custom Frontend Theme", "10 Custom Plugins", "3rd-Party Integrations", "Performance Tuning"],
+          "cta": "Choose Professional"
+        },
+        {
+          "name": "Enterprise Pack",
+          "price": "€15,000+",
+          "description": "A complete, tailor-made solution for large-scale operations with complex requirements.",
+          "features": ["Full Custom Architecture", "Multi-store/Multi-language", "Advanced ERP/CRM Integrations", "Dedicated Support & SLA"],
+          "cta": "Contact Us"
+        }
+      ]
+    },
+    "caseStudies": {
+      "title": "Success Stories",
+      "subtitle": "See how we've helped businesses transform their e-commerce presence with Vendure.",
+      "readMore": "Read Case Study"
+    },
+    "techStack": {
+      "title": "Our Preferred Technical Stack",
+      "subtitle": "We use modern, powerful technologies to build best-in-class e-commerce experiences."
+    },
+    "migration": {
+      "title": "Seamless Migration Services",
+      "subtitle": "Ready to move to a modern, headless architecture? We make the transition from platforms like Shopify, WooCommerce, or Magento smooth and hassle-free. Our experts handle data migration, SEO preservation, and redirect strategies to ensure a seamless launch."
+    },
+    "calculator": {
+      "title": "Get a Project Estimate",
+      "subtitle": "Use our interactive tool to get a rough estimate for your Vendure project. For a detailed quote, please get in touch.",
+      "basePrice": "Base Setup",
+      "features": "Select Additional Features:",
+      "customTheme": "Custom Theme Design",
+      "pluginDev": "Custom Plugin Development (per plugin)",
+      "erpIntegration": "ERP/CRM Integration",
+      "total": "Estimated Total:",
+      "disclaimer": "*This is a rough estimate. Prices may vary based on project complexity."
+    }
+  },
+  "astroPage": {
+    "hero": {
+      "title": "Lightning-Fast Websites with Astro",
+      "subtitle": "Experience the future of web development. We build content-focused, SEO-optimized sites that load instantly and deliver unparalleled user experiences.",
+      "cta": "Explore Themes"
+    },
+    "performance": {
+      "title": "Performance That Converts",
+      "subtitle": "Astro's unique island architecture ships zero JavaScript by default, resulting in unbeatable load times. See the difference for yourself.",
+      "widgetTitle": "Interactive Speed Comparison",
+      "astro": "Astro",
+      "traditional": "Traditional MPA",
+      "lighthouse": "Lighthouse Score",
+      "fcp": "First Contentful Paint",
+      "tti": "Time to Interactive"
+    },
+    "packages": {
+      "title": "Astro Theme Packages",
+      "subtitle": "Get a head start with our professionally designed Astro themes, or let us build a completely custom solution for you.",
+      "items": [
+        {
+          "name": "Business Themes",
+          "price": "€500 - €1,200",
+          "description": "Professional themes for corporate sites, portfolios, and lead generation."
+        },
+        {
+          "name": "E-commerce Themes",
+          "price": "€800 - €2,000",
+          "description": "Optimized for speed and conversion, perfect for Astro-powered storefronts."
+        },
+        {
+          "name": "SaaS Themes",
+          "price": "€1,000 - €2,500",
+          "description": "Feature-rich themes for software startups and marketing pages."
+        },
+        {
+          "name": "Custom Development",
+          "price": "€3,000+",
+          "description": "A bespoke website tailored to your exact brand and functionality needs."
+        }
+      ],
+      "cta": "View Details"
+    },
+    "benchmarks": {
+      "title": "Astro vs. The Competition",
+      "subtitle": "The numbers speak for themselves. Astro consistently outperforms other popular frameworks in key performance metrics.",
+      "framework": "Framework",
+      "tti": "Time to Interactive",
+      "pageSize": "Page Size (Initial)",
+      "lighthouse": "Lighthouse Score"
+    },
+    "integrations": {
+      "title": "Seamless Integrations",
+      "subtitle": "Astro plays well with others. Connect your favorite headless CMS, analytics tools, and APIs with ease."
+    },
+    "demos": {
+      "title": "Live Theme Demos",
+      "subtitle": "Explore our Astro themes in action. See the speed and feel the smooth navigation for yourself.",
+      "customize": "Customize",
+      "colors": "Brand Colors"
+    }
+  },
+  "umbracoPage": {
+    "hero": {
+      "title": "Powerful Content Management with Umbraco",
+      "subtitle": "The friendly, flexible, and scalable open-source CMS built on .NET. We build enterprise-grade content solutions tailored to your needs.",
+      "cta": "Build Your Package"
+    },
+    "packages": {
+      "title": "Our Umbraco Packages",
+      "subtitle": "From simple websites to complex multi-site enterprise solutions, we have a package for you.",
+      "items": [
+        {
+          "name": "Basic CMS Setup",
+          "price": "€2,500",
+          "description": "Ideal for small to medium businesses needing a professional, easy-to-manage website.",
+          "features": ["Standard Umbraco Install", "Up to 5 Content Types", "Basic Theme", "Editor Training"],
+          "cta": "Get Started"
+        },
+        {
+          "name": "Multi-site Management",
+          "price": "€5,000",
+          "description": "For organizations managing multiple brands or regional websites from a single backoffice.",
+          "features": ["Multi-site Architecture", "Shared Content Libraries", "Advanced User Roles", "Custom Theme"],
+          "cta": "Choose Multi-site"
+        },
+        {
+          "name": "Enterprise Solution",
+          "price": "€10,000+",
+          "description": "A comprehensive solution with custom integrations for large-scale, business-critical websites.",
+          "features": ["Headless Capabilities", "ERP/CRM Integrations", "Umbraco Commerce", "Load Balancing Setup"],
+          "cta": "Contact Sales"
+        }
+      ]
+    },
+    "builder": {
+      "title": "Custom Package Builder",
+      "subtitle": "Don't see a package that fits? Build your own by selecting the features you need for an instant estimate.",
+      "basePrice": "Base Setup",
+      "featuresTitle": "Select Features:",
+      "pagesTitle": "Estimated Number of Unique Page Types:",
+      "feature_contentTypes": "Custom Content Types",
+      "feature_multiLanguage": "Multi-language Support",
+      "feature_commerce": "E-commerce (Umbraco Commerce)",
+      "feature_customRoles": "Advanced User Roles & Permissions",
+      "feature_integrations": "Third-Party API Integrations",
+      "total": "Your Estimated Price:",
+      "disclaimer": "*All estimates are preliminary. Final pricing depends on project scope."
+    },
+    "benefits": {
+      "title": "The Umbraco Advantage",
+      "subtitle": "See how Umbraco stacks up against other popular content management systems.",
+      "feature": "Feature",
+      "competitors": ["Umbraco", "WordPress", "Drupal"],
+      "features": ["Flexibility", "Ease of Use (for Editors)", "Developer Experience", "Security", "Scalability"],
+      "comparison": [
+        ["Total (No pre-defined models)", "Post/Page-centric, flexible via plugins", "Highly flexible, steep learning curve"],
+        ["Excellent (Clean UI, content-focused)", "Very Good (Classic editor can be complex)", "Good (Can be overwhelming for non-tech users)"],
+        ["Excellent (.NET Core, great API)", "Good (PHP, large plugin ecosystem)", "Good (PHP, complex API)"],
+        ["High (Less market share, .NET security)", "Variable (High target, plugin vulnerabilities)", "High (Robust core security)"],
+        ["Excellent (Built for enterprise scale)", "Good (Can scale with right hosting/plugins)", "Excellent (Built for complex sites)"]
+      ]
+    },
+    "portal": {
+      "title": "A Client Portal That Works For You",
+      "subtitle": "We don't just build websites; we create intuitive content management experiences. We can customize the Umbraco backoffice to match your workflow, hide unnecessary clutter, and build custom dashboards so your team can work more efficiently."
+    },
+    "support": {
+      "title": "Training & Support",
+      "subtitle": "We offer comprehensive training for your content editors and ongoing support packages to ensure your Umbraco site remains secure, up-to-date, and performant.",
+      "cta": "View Support Plans"
+    }
+  },
+  "portfolioPage": {
+    "title": "Our Work",
+    "description": "Explore a curated selection of our projects. Use the filters to find work relevant to your industry and needs.",
+    "viewAll": "View All Projects",
+    "filters": {
+      "service": "Filter by Service",
+      "industry": "Filter by Industry",
+      "budget": "Filter by Budget",
+      "allServices": "All Services",
+      "allIndustries": "All Industries",
+      "allBudgets": "All Budgets"
+    },
+    "noResults": "No projects found matching your criteria. Try adjusting your filters."
+  },
+  "caseStudyPage": {
+    "overview": "Project Overview",
+    "timeline": "Timeline",
+    "budget": "Budget",
+    "service": "Service",
+    "techStack": "Tech Stack",
+    "problem": "The Problem",
+    "solution": "Our Solution",
+    "results": "Results & Impact",
+    "beforeAfter": "Before & After",
+    "before": "Before",
+    "after": "After",
+    "liveDemo": "View Live Demo"
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "We are architects of the modern web.",
+      "subtitle": "We are a passionate team of developers and designers dedicated to building high-performance, scalable, and user-centric digital experiences. We turn complex problems into elegant solutions."
+    },
+    "mission": {
+      "title": "Our Mission & Values",
+      "values": [
+        { "name": "Innovation", "description": "We constantly explore new technologies and approaches to deliver cutting-edge solutions." },
+        { "name": "Quality", "description": "Our commitment to excellence is unwavering. We write clean, maintainable, and robust code." },
+        { "name": "Partnership", "description": "We believe in collaborative relationships, working with our clients as a true extension of their team." }
+      ]
+    },
+    "team": {
+      "title": "Meet the Team",
+      "subtitle": "The minds behind the magic. We are a collective of experts passionate about technology.",
+      "members": [
+        { "name": "Alex Doe", "role": "Lead Frontend Engineer", "specialization": "React, Astro, Performance" },
+        { "name": "Jane Smith", "role": "Head of E-commerce", "specialization": "Vendure, Headless Architecture" },
+        { "name": "Sam Wilson", "role": "Senior .NET Developer", "specialization": "Umbraco, Azure" }
+      ]
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "From a small startup to a trusted development partner.",
+      "milestones": [
+        { "year": "2020", "event": "NearMeLab Founded" },
+        { "year": "2021", "event": "Launched our first major Vendure e-commerce site." },
+        { "year": "2022", "event": "Became certified Umbraco partners." },
+        { "year": "2023", "event": "Expanded into Astro development" },
+        { "year": "2024", "event": "Opened our second office and doubled our team size." }
+      ]
+    },
+    "certifications": {
+      "title": "Certifications & Partnerships",
+      "subtitle": "We are proud to be recognized by industry leaders for our expertise and commitment to quality."
+    }
+  },
+  "blogPage": {
+    "searchPlaceholder": "Search articles...",
+    "allCategories": "All",
+    "noResults": "No articles found. Try a different search or filter.",
+    "newsletter": {
+      "title": "Stay Ahead of the Curve",
+      "subtitle": "Subscribe to our newsletter for the latest insights on technology, development, and design, delivered straight to your inbox.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "error": "Please enter a valid email."
+    }
+  },
+  "contact_page": {
+    "meta_title": "Contact Us",
+    "meta_description": "Get in touch with us for project inquiries or support.",
+    "title": "Let's Build Together",
+    "subtitle": "Have an idea or a project? We'd love to hear about it. Fill out the form below or email us directly.",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "item1": {
+        "question": "What is the typical timeline for a project?",
+        "answer": "Timelines vary based on project complexity, but a standard marketing site often takes 4-6 weeks, while a more complex e-commerce build can take 2-4 months."
+      },
+      "item2": {
+        "question": "Do you offer ongoing support?",
+        "answer": "Yes, we offer monthly retainers and on-demand support packages to ensure your application remains up-to-date, secure, and performant."
+      },
+      "item3": {
+        "question": "What technologies do you specialize in?",
+        "answer": "We specialize in headless e-commerce with Vendure, fast content sites with Astro, and flexible enterprise solutions with Umbraco."
+      }
+    },
+    "indie_support": {
+      "title": "Community & Indie Support",
+      "description": "As strong believers in open-source and community, we offer free support for our indie packages and community projects. For direct inquiries:",
+      "response_time": "We typically respond to community inquiries within 48-72 hours."
+    },
+    "contact_form": {
+      "title": "Send a Direct Message",
+      "subtitle": "For project quotes and business inquiries, please use the form below. We'll get back to you within one business day."
+    }
+  }
+}

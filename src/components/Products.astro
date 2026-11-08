@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import calcatomLogo from '../assets/img/calcatom-logo-256.png';
+import astroboardLogo from '../assets/img/astroboard-logo.png';
+import { getLangFromUrl } from '../i18n/utils';
+
+export interface Props {
+    t: (key: string) => any;
+}
+
+const { t } = Astro.props as Props;
+
+const lang = getLangFromUrl(Astro.url);
+const isRTL = lang === 'ar';
+---
+
+<section class={isRTL ? 'grid grid-cols-1 md:grid-cols-2 text-white' : 'grid grid-cols-1 md:grid-cols-2 text-white'}>
+    <a href="https://github.com/nearmelab/calcatom" target="_blank" rel="noopener noreferrer" class={isRTL ? 'block bg-indigo-600 p-12 text-center hover:bg-indigo-500 transition-colors duration-300 order-2' : 'block bg-indigo-600 p-12 text-center hover:bg-indigo-500 transition-colors duration-300 order-1'}>
+        <div class="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+            <Image 
+                src={calcatomLogo} 
+                alt="Calcatom Logo" 
+                class="w-20 h-20"
+                width={80}
+                height={80}
+                loading="eager"
+                format="webp"
+                quality={90}
+            />
+        </div>
+        <h3 class="text-3xl font-bold mb-4">Calcatom</h3>
+        <p class="text-indigo-200 leading-relaxed max-w-md mx-auto">
+            {t('products.calcatom_description')}
+        </p>
+    </a>
+    <a href="https://github.com/tarikrital/astroboard" target="_blank" rel="noopener noreferrer" class={isRTL ? 'block bg-indigo-700 p-12 text-center hover:bg-indigo-600 transition-colors duration-300 order-1' : 'block bg-indigo-700 p-12 text-center hover:bg-indigo-600 transition-colors duration-300 order-2'}>
+        <div class="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+            <Image 
+                src={astroboardLogo} 
+                alt="Astroboard Logo" 
+                class="w-24 h-24"
+                width={96}
+                height={96}
+                loading="eager"
+                format="webp"
+                quality={90}
+            />
+        </div>
+        <h3 class="text-3xl font-bold mb-4">Astroboard</h3>
+        <p class="text-indigo-200 leading-relaxed max-w-md mx-auto">
+            {t('products.astroboard_description')}
+        </p>
+    </a>
+</section>
+
+<style>
+    /* RTL specific styles */
+    .rtl {
+        direction: rtl;
+    }
+    
+    .rtl .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .rtl .text-center {
+        text-align: center;
+    }
+    
+    /* Ensure proper spacing in RTL */
+    .rtl .grid {
+        direction: rtl;
+    }
+</style>

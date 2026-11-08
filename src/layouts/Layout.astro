@@ -1,0 +1,80 @@
+---
+import Head from '../components/Head.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import CookieConsent from '../components/CookieConsent.tsx';
+import ProgressBar from '../components/ProgressBar.astro';
+import ScrollToTop from '../components/ScrollToTop.jsx';
+import { useTranslations } from '@/i18n/utils';
+import CrispChat from '../components/CrispChat.astro';
+
+interface Props {
+	title: string;
+    description?: string;
+}
+
+const { title, description } = Astro.props;
+const currentPage = Astro.url.pathname;
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<Head {title} {description} />
+		<GoogleAnalytics />
+		
+		<!-- Preload critical fonts (TTF format) -->
+		<link rel="preload" href="/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		
+		<!-- Font definitions -->
+		<style>
+              
+			@font-face {
+				font-family: 'IBM Plex Sans Arabic';
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url('/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Regular.ttf') format('truetype');
+			}
+			@font-face {
+				font-family: 'IBM Plex Sans Arabic';
+				font-style: normal;
+				font-weight: 500;
+				font-display: swap;
+				src: url('/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Medium.ttf') format('truetype');
+			}
+			@font-face {
+				font-family: 'IBM Plex Sans Arabic';
+				font-style: normal;
+				font-weight: 600;
+				font-display: swap;
+				src: url('/fonts/IBMPlexSansArabic/IBMPlexSansArabic-SemiBold.ttf') format('truetype');
+			}
+			@font-face {
+				font-family: 'IBM Plex Sans Arabic';
+				font-style: normal;
+				font-weight: 700;
+				font-display: swap;
+				src: url('/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Bold.ttf') format('truetype');
+			}
+		</style>
+	</head>
+	<body class="bg-white dark:bg-dark-bg text-slate-900 dark:text-slate-100">
+        <div class="flex flex-col min-h-screen">
+            <Navbar currentPage={currentPage} t={t} />
+            <ProgressBar />
+            <main class="flex-grow">
+                <slot />
+            </main>
+            <Footer t={t} theme="globe" />
+        </div>
+
+        <CookieConsent client:visible />
+        <ScrollToTop client:visible lang={lang} />
+        <!-- <CrispChat /> -->
+	</body>
+</html>

@@ -1,0 +1,36 @@
+---
+// This component injects the Zoho Form iframe and handles responsive height updates.
+const perma = "fXgkiKzaRqcZ2an1QWGRyQXLLCxZPzPxCrqPzrYOH-w";
+---
+
+<div class="bg-white dark:bg-dark-card rounded-3xl p-2 sm:p-6 shadow-xl border border-light-border dark:border-dark-border overflow-hidden">
+    <div id="zf_div_fXgkiKzaRqcZ2an1QWGRyQXLLCxZPzPxCrqPzrYOH-w">
+        <iframe 
+            id="zf_contact_iframe"
+            src={`https://forms.zohopublic.com/supportnear1/form/ContactUs/formperma/${perma}?zf_rszfm=1`}
+            style="border:none; height:910px; width:100%; transition: all 0.5s ease;"
+            aria-label="Contact Us"
+        ></iframe>
+    </div>
+</div>
+
+<script define:vars={{ perma }}>
+    window.addEventListener('message', function(event) {
+        const evntData = event.data;
+        if (typeof evntData === 'string') {
+            const zf_ifrm_data = evntData.split('|');
+            if (zf_ifrm_data.length >= 2) {
+                const zf_perma_in = zf_ifrm_data[0];
+                const zf_ifrm_ht_nw = (parseInt(zf_ifrm_data[1], 10) + 15) + "px";
+                const iframe = document.getElementById("zf_contact_iframe");
+
+                if (iframe && iframe.src.includes(zf_perma_in)) {
+                    iframe.style.height = zf_ifrm_ht_nw;
+                    if (zf_ifrm_data.length === 3) {
+                        iframe.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+        }
+    }, false);
+</script>

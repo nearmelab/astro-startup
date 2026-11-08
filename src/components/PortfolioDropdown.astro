@@ -1,0 +1,16 @@
+---
+import NavLink from './NavLink.astro';
+
+export interface Props {
+    lang: string;
+    currentPage: string;
+}
+const { lang, currentPage } = Astro.props;
+---
+
+<div id="portfolio-dropdown" class="hidden absolute mt-2 w-48 rounded-md shadow-lg bg-white/80 backdrop-blur-md ring-1 ring-black ring-opacity-5 focus:outline-none">
+    <div class="py-1">
+        <NavLink href="https://calcatom.nearmelab.digital" currentPage={currentPage} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary">Calcatom</NavLink>
+        <NavLink href="https://themes.nearmelab.digital" currentPage={currentPage} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary">Themes</NavLink>
+    </div>
+</div>

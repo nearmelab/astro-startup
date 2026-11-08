@@ -1,0 +1,300 @@
+
+{
+  "site": {
+    "title": "Productivity Tools House and Web Agency",
+    "description": "Web agency crafting modern, performant solutions: Astro-powered websites, custom browser extensions, Umbraco CMS platforms, and headless e-commerce with Vendure. We specialize in productivity tools that integrate seamlessly into your workspace."
+  },
+  "home_page": {
+    "meta_title": "Nearmelab - We make sure customers find you everywhere",
+    "meta_description": "We help you show up everywhere customers are searching, swiping, scrolling, streaming, and shopping."
+  },
+  "header": {
+    "logo_text": "Nearmelab",
+    "services": "Services",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "hire_us": "Hire us!",
+    "blog": "Blog"
+  },
+  "footer": {
+    "description": "Building smart tools for everyday productivity. Designed with simplicity and privacy at the core.",
+    "resources_title": "Resources",
+    "support_link": "Support & FAQ",
+    "privacy_link": "Privacy Policy",
+    "terms_link": "Terms of Service",
+    "contact_title": "Contact",
+    "contact_email": "support@nearmelab.digital",
+    "contact_location": "Ouarzazate, Morocco",
+    "copyright": "Nearmelab © 2026. All rights reserved.",
+    "made_by": "Who's behind Nearmelab? Meet",
+    "made_by_author": "Tarik Rital"
+  },
+"hero": {
+    "title": {
+        "prefix": "Website design, Productivity tools & Ecommerce solution for ",
+        "highlight1": "makers",
+        "highlight2": "sellers",
+        "suffix": ""
+    },
+    "subtitle": "We help you show up everywhere customers are searching, swiping, scrolling, streaming, and shopping.",
+    "form_title": "How can we help you get found?",
+    "cta_button": "Get started",
+    "services": {
+        "webdev": "Web Development",
+        "extensions": "Browser Extensions",
+        "ecommerce": "Headless E-commerce",
+        "cms": "CMS Dashboards",
+        "productivity": "Productivity Tools",
+        "publishing": "Store Publishing",
+        "analytics": "User Insights",
+        "integration": "API Integrations",
+        "consulting": "Custom Solutions"
+    }
+},
+  "services_form": {
+    "title": "What can we build for you?",
+    "details_label": "Tell us about your project",
+    "details_placeholder": "Describe your goals, what you need, and any other relevant details.",
+    "name_label": "Your Name",
+    "email_label": "Your Email",
+    "cancel_button": "Cancel",
+    "submit_button": "Submit Inquiry",
+    "privacy_notice": "We respect your privacy. No spam, ever."
+  },
+  "modal": {
+    "title": "Tell Us About Your Project",
+    "selected_services": "Selected Services",
+    "name": "Your Name",
+    "email": "Your Email",
+    "company": "Company Name",
+    "message": "Tell us about your project...",
+    "message_placeholder": "Describe your goals, timeline, budget, and any other relevant details.",
+        "cancel_button": "Cancel",
+        "submit_button": "Submit Request"
+  },
+  "about_page": {
+    "title": "About Us - Nearmelab",
+    "description": "Learn more about the mission and values of Nearmelab.",
+    "header": "About Nearmelab",
+    "subhead": "We build simple, powerful tools for everyone."
+  },
+  "services_page": {
+    "title": "Our Services - Nearmelab",
+    "description": "Discover the professional services we offer.",
+    "header": "Our Services",
+    "subhead": "Explore how we can help you achieve your goals."
+  },
+  "about": {
+    "title": "Built by Nearmelab",
+    "image_alt": "Tarik - Nearmelab Founder",
+    "bio1": "I'm Tarik, a developer from <strong>Ouarzazate, Morocco</strong> creating useful browser tools. Calcatom is my first extension, designed to make calculations fast and accessible while you browse.",
+    "bio2": "Being a solo founder means I'm involved in every step—from initial design to final code. My goal is to create the \"indie\" alternative to bloated corporate software."
+  },
+  "showcase": {
+    "eyebrow": "Featured Product",
+    "title": "Calcatom - Fast Browser Calculator",
+    "subtitle": "The lightweight calculator extension you've been looking for. No trackers, no bloat, just pure utility right in your browser toolbar.",
+    "image_alt": "Calcatom Browser Extension",
+    "link": "See full product details →"
+  },
+"features": {
+    "advanced_calculations": {
+        "pretitle": "Advanced Calculations",
+        "title": "From Trigonometry to Logarithms.",
+        "description": "Calcatom's scientific mode is packed with features for students and professionals. Handle complex expressions with parentheses, switch between degrees and radians, and utilize a full suite of functions including trig, logs, powers, roots, and factorials. Your entire calculation history is saved, complete with symbolic expressions."
+    },
+    "currency_converter": {
+        "pretitle": "Global Currency Converter",
+        "title": "Real-time rates for over 150 currencies.",
+        "description": "Stay up-to-date with our integrated currency converter. Get live exchange rates, including crypto, with a clean and intuitive interface. Swap currencies instantly, search for markets, and manage your favorite currencies for quick access. The UI is designed for speed and clarity, making international conversions effortless."
+    },
+    "customization": {
+        "pretitle": "Pro-Level Customization",
+        "title": "Take control with your own API key.",
+        "description": "For power users, Calcatom offers the ability to use your own private ExchangeRate-API key. This gives you a higher request limit for currency conversions—1,500 free requests per month. Our settings panel makes it easy to add, validate, and manage your key securely, putting you in control of your data."
+    }
+},
+  "why_built": {
+    "title": "\"Why I Built This\"",
+    "paragraph1": "How many times have you been filling out an online form, calculating a budget, or following a recipe, only to be interrupted by the need for a quick calculation?",
+    "paragraph2": "I wanted something clean, and respectful of my privacy. So I built Calcatom. I hope you find it as useful as I do.",
+    "stats_title": "Development Stats"
+  },
+  "values": {
+    "simple": { "title": "Simple", "subtitle": "No bloat, just what you need" },
+    "private": { "title": "Private", "subtitle": "Data stays on your device" },
+    "fast": { "title": "Fast", "subtitle": "Built for performance" },
+    "accessible": { "title": "Accessible", "subtitle": "Free tier forever" }
+  },
+"stats": {
+    "edge_downloads": "downloads on MS Edge addons store",
+    "firefox_downloads": "downloads on Firefox addons store",
+    "opera_downloads": "downloads on Opera addons store",
+    "nuget_downloads": "downloads as NuGet Umbraco package"
+},
+  "roadmap": {
+    "title": "What's Coming in 2025",
+    "item1": { "date": "DEC 2025", "title": "Scientific Calculator", "description": "Adding advanced trigonometric functions, logarithms, and constants for power users." },
+    "item2": { "date": "DEC 2025", "title": "Currency Converter", "description": "Real-time exchange rates integrated directly into the calculator interface." },
+    "item3": { "date": "DEC 2025", "title": "Keyboard Shortcuts", "description": "Customizable hotkeys for power users to toggle the extension and use specific features." },
+    "feedback": { "text": "Want to influence what I build next? I'm always listening.", "link": "Send Feedback" }
+  },
+  "services": {
+    "title": "Our Services",
+    "web_development": {
+      "title": "Web Development",
+      "description": "We build fast, modern, and accessible websites using the latest technologies. From static sites to complex web applications."
+    },
+    "mobile_development": {
+      "title": "Mobile Development",
+      "description": "We create beautiful and performant mobile apps for iOS and Android. Native or cross-platform, we've got you covered."
+    },
+    "ui_ux_design": {
+      "title": "UI/UX Design",
+      "description": "We design intuitive and engaging user interfaces that are both beautiful and easy to use. Let us bring your vision to life."
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "full_name": "Full Name",
+    "email": "Email Address",
+    "message": "Your Message",
+    "submit": "Send Message"
+  },
+  "terms_page": {
+    "meta_title": "Terms of Service - Nearmelab",
+    "meta_description": "These are the terms and conditions for using our service. By using our service, you agree to these terms. If you have any questions, please contact us.",
+    "title": "Terms of Service",
+    "content": "<p class=\"lead\">These are the terms and conditions for using our service. By using our service, you agree to these terms. If you have any questions, please contact us.</p><p><strong>Last Updated:</strong> January 23, 2025</p><h2>1. Use of Our Service</h2><p>You agree to use our services and browser extensions only for lawful purposes. You are prohibited from any use of the services that would constitute a violation of any applicable law, regulation, rule, or ordinance.</p><h2>2. Intellectual Property</h2><p>All content, design, and functionality of our extensions are the exclusive property of Nearmelab and are protected by international copyright, trademark, and other intellectual property laws.</p><h2>3. Disclaimer of Warranty</h2><p>Our services are provided \"as is\" without any warranties of any kind, either express or implied. We do not warrant that the service will be uninterrupted or error-free.</p><h2>4. Limitation of Liability</h2><p>In no event shall Nearmelab be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service.</p>"
+  },
+  "privacy_page": {
+    "meta_title": "Privacy Policy - Nearmelab",
+    "meta_description": "We are committed to protecting your privacy. This policy outlines how we handle your personal information.",
+    "title": "Privacy Policy",
+    "content": "<p class=\"lead\">We are committed to protecting your privacy. This policy outlines how we handle your personal information. If you have any questions, please contact us.</p><p><strong>Last Updated:</strong> January 23, 2025</p><h2>1. Data We Don't Collect</h2><p>We are proud to say that we do not collect, store, or process any of your personal information. Your data is your own. Calcatom performs all its calculations locally on your device. We have no access to your calculations, history, or any other data you enter into the extension.</p><h2>2. Local Storage</h2><p>Calcatom uses your browser's local storage (<code>window.localStorage</code>) to save your calculation history and user settings. This data is stored on your own computer and is not transmitted to any server. It is entirely under your control and can be cleared at any time from the extension's settings or by clearing your browser's data.</p><h2>3. Third-Party Services</h2><p>We do not use any third-party analytics or tracking services. Our contact form on the support page is a simple Zoho Form, which is only used to transmit your message to our support email. We do not store this information beyond the email communication.</p><h2>4. Policy Updates</h2><p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>"
+  },
+  "calcatom_page": {
+    "meta_title": "Calcatom - Fast Browser Calculator",
+    "meta_description": "A premium calculation experience, built with care for browsers. The perfect balance of features and performance.",
+    "title": "Calcatom - Fast Browser Calculator",
+    "subtitle": "A premium calculation experience, built with care for browsers. The perfect balance of features and performance.",
+    "image_alt": "Calcatom Interface",
+    "features": {
+      "title": "Detailed Features",
+      "item1": { "title": "Low Latency", "description": "Optimized JS engine for instantaneous response times. No waiting, no lagging." },
+      "item2": { "title": "Smart History", "description": "Recall previous calculations with a single click. Copy history results directly to your clipboard." },
+      "item3": { "title": "Local Processing", "description": "Calculations happen 100% locally. We don't track your math or store it on any server." }
+    },
+    "pricing": {
+      "title": "Pricing",
+      "plan_standard": { "title": "Standard Plan", "badge": "Active", "price": "Free Forever", "feature1": "Basic & advanced operations", "feature2": "History tracking", "feature3": "Multi-browser support" },
+      "plan_pro": { "title": "Pro Plan", "badge": "Soon", "price": "$1.99 / year", "description": "Will include cloud sync & dark mode themes." }
+    },
+    "cta": {
+      "title": "Get it now",
+      "button1": "Firefox Web Store",
+      "button2": "Edge Add-ons",
+      "button3": "Opera Add-ons"
+    }
+  },
+  "support_page": {
+    "meta_title": "Support & FAQ - Nearmelab",
+    "meta_description": "Need help with Calcatom or have a feature request? I handle all support personally and I'm happy to assist.",
+    "title": "Support & FAQ",
+    "subtitle": "Need help with Calcatom or have a feature request? I handle all support personally and I'm happy to assist.",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "item1": { "question": "How do I access Calcatom?", "answer": "Once installed, click the puzzle piece icon in your browser toolbar, then click the Calcatom icon. You can also \"pin\" it for 1-click access." },
+      "item2": { "question": "Does it work offline?", "answer": "Yes, 100%. Calcatom doesn't need an internet connection to perform calculations." },
+      "item3": { "question": "How many history items are saved?", "answer": "Currently, we store the last 50 calculations. You can clear this history at any time in the settings menu." }
+    },
+    "indie_support": {
+      "title": "Indie Support",
+      "description": "Nearmelab is a solo studio. When you send a message, it goes directly to the developer.",
+      "response_time": "24-48 hours"
+    },
+    "contact_form": {
+      "title": "Contact Me",
+      "subtitle": "Use the form below for bugs, feature requests, or general inquiries."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "The latest news, updates, and thoughts from the Nearmelab team.",
+    "readMore": "Read more"
+  },
+   "thank_you": {
+    "seo": {
+      "title": "Thank You - Nearmelab Digital",
+      "description": "Thank you for contacting Nearmelab Digital. We'll get back to you soon."
+    },
+    "title": "Thank You!",
+    "message": "Your message has been sent successfully. We'll get back to you within 24 hours.",
+    "home_button": "Return to Home"
+  },
+  "client_results": {
+    "title": "Our Umbraco CMS Contributions",
+    "subtitle": "Explore how we help advance the Umbraco CMS ecosystem with innovative packages and solutions",
+    "cta_button": "Contact us to learn more"
+},
+"testimonials": {
+    "eyebrow": "EXPERT RECOGNITION",
+    "title": "We work honestly to make our products look good, and it shows."
+},
+"products": {
+    "calcatom_description": "A powerful browser calculator with scientific functions and real-time currency conversion — designed for developers, students, and professionals.",
+    "astroboard_description": "Real-time analytics, content insights, and team collaboration—right in your Umbraco backoffice dashboard."
+},
+"services": {
+    "title": "Our Services",
+    "subtitle": "for Cutting-Edge Solutions",
+    "description": "We build privacy-focused browser extensions and modern web solutions. If you have content to show, it needs to reach your reader quickly.",
+    "eyebrow": "Engineering Excellence",
+    "badge": {
+        "core": "CORE",
+        "web": "WEB",
+        "business": "BUSINESS",
+        "commerce": "COMMERCE"
+    },
+    "expertise": {
+        "addons": "Add-ons",
+        "backend": "Back-end",
+        "vitals": "Core Web Vitals",
+        "architecture": "Architecture",
+        "privacy": "Privacy First"
+    },
+    "browser_extensions": {
+        "title": "Browser Extensions",
+        "description": "We develop custom browser tools (Chrome, Firefox, Edge) focused entirely on user privacy and productivity.",
+        "image_alt": "Browser extensions image",
+        "satisfaction": "User Satisfaction"
+    },
+    "web_solutions": {
+        "title": "Modern Web Solutions",
+        "description": "Personal sites, blogs, and software documentation built with the latest technologies for peak performance.",
+        "image_alt": "Web solutions image",
+        "response_time": "Response Time",
+        "lighthouse": "Lighthouse Score"
+    },
+    "business": {
+        "title": "Landing Pages & SaaS",
+        "description": "Design and development of landing pages that convert visitors into customers, and complex SaaS systems.",
+        "feature1": "Optimized Conversion Paths",
+        "feature2": "Scalable Cloud Infrastructure",
+        "feature3": "Real-time Analytics Integration"
+    },
+    "commerce": {
+        "title": "Marketing & E-commerce",
+        "description": "Integrated e-commerce solutions focused on blazing speed and seamless user experience.",
+        "feature1": "Headless Commerce Architecture",
+        "feature2": "Secure Payment Gateways",
+        "feature3": "Inventory Management APIs"
+    },
+    "cta": {
+        "title": "Ready to launch your next project?",
+        "subtitle": "Contact us today to discuss how we can turn your vision into a fast, secure digital reality.",
+        "button": "Get Started Now"
+    }
+}
+}

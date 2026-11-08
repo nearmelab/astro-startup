@@ -1,0 +1,205 @@
+---
+import { Image } from 'astro:assets';
+import IconBrandEdge from '~icons/tabler/brand-edge';
+import IconBrandFirefox from '~icons/tabler/brand-firefox';
+import IconBrandOpera from '~icons/tabler/brand-opera';
+import { getLangFromUrl } from '../i18n/utils';
+
+// Import images
+import edgeImage from '../assets/img/msedge-calcatom-show1.png';
+import firefoxImage from '../assets/img/firefox-calcatom-show3.png';
+import operaImage from '../assets/img/opera-calcatom-show4.png';
+
+export interface Props {
+    t: (key: string) => any;
+}
+
+const { t } = Astro.props as Props;
+
+const lang = getLangFromUrl(Astro.url);
+const isRTL = lang === 'ar';
+
+const featuresData = [
+  {
+    pretitle: t('features.advanced_calculations.pretitle'),
+    title: t('features.advanced_calculations.title'),
+    description: t('features.advanced_calculations.description'),
+    imageOnLeft: false,
+    imageSrc: edgeImage,
+    imageAlt: 'Scientific calculator mode',
+    browser: 'Edge'
+  },
+  {
+    pretitle: t('features.currency_converter.pretitle'),
+    title: t('features.currency_converter.title'),
+    description: t('features.currency_converter.description'),
+    imageOnLeft: true,
+    imageSrc: firefoxImage,
+    imageAlt: 'Currency converter interface',
+    browser: 'Firefox'
+  },
+  {
+    pretitle: t('features.customization.pretitle'),
+    title: t('features.customization.title'),
+    description: t('features.customization.description'),
+    imageOnLeft: false,
+    imageSrc: operaImage,
+    imageAlt: 'API key settings panel',
+    browser: 'Opera'
+  }
+];
+
+const browsers = {
+    Edge: {
+        name: 'Edge',
+        icon: IconBrandEdge,
+        link: 'https://microsoftedge.microsoft.com/addons/detail/calcatom/onhimnegejpdmplijeeppdinkeblpofm',
+        active: true
+    },
+    Firefox: {
+        name: 'Firefox',
+        icon: IconBrandFirefox,
+        link: 'https://addons.mozilla.org/en-US/firefox/addon/calcatom',
+        active: true
+    },
+    Opera: {
+        name: 'Opera',
+        icon: IconBrandOpera,
+        color: '#ff1b2d',
+        link: 'https://addons.opera.com/en/extensions/details/calcatom/',
+        active: true
+    }
+};
+---
+
+<div class={isRTL ? 'rtl' : ''}>
+    {featuresData.map((feature, index) => {
+        const browser = browsers[feature.browser];
+        const Icon = browser.icon;
+        const Tag = browser.active ? 'a' : 'div';
+        const props = browser.active ? { href: browser.link, target: '_blank', rel: 'noopener noreferrer' } : {};
+
+        // Determine if image should be on left or right based on RTL
+        const imageOnLeft = isRTL ? !feature.imageOnLeft : feature.imageOnLeft;
+
+        return (
+            <section class:list={[
+                'py-16 sm:py-20',
+                {
+                    'bg-white dark:bg-slate-900': index === 0 || index === 2,
+                    'bg-slate-50 dark:bg-slate-800': index === 1,
+                }
+            ]}>
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class:list={[
+                        "grid grid-cols-1 items-center gap-y-16 md:grid-cols-2 md:gap-x-12 lg:gap-x-20",
+                        imageOnLeft && "md:grid-flow-col-dense"
+                    ]}>
+                        {/* Text Content */}
+                        <div class:list={[
+                            imageOnLeft && 'md:col-start-2'
+                        ]}>
+                            <p class={isRTL ? 'font-bold uppercase text-primary text-right' : 'font-bold uppercase text-primary'}>
+                                {feature.pretitle}
+                            </p>
+                            <div class={isRTL ? 'mt-2 h-1 w-16 bg-primary ml-auto' : 'mt-2 h-1 w-16 bg-primary'}></div>
+                            <h2 class={isRTL ? 'mt-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl text-right' : 'mt-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl'}>
+                                {feature.title}
+                            </h2>
+                            <p class={isRTL ? 'mt-6 text-lg text-gray-600 dark:text-gray-300 text-right' : 'mt-6 text-lg text-gray-600 dark:text-gray-300'}>
+                                {feature.description}
+                            </p>
+                            <div class={isRTL ? 'mt-8 flex justify-start' : 'mt-8'}>
+                                {browser.name === 'Edge' && browser.active && (
+                                    <a {...props} title="Get CalcaTom from Microsoft Edge">
+                                        <img src="/brand/english-get-it-ms-edge.png" alt="Get it from Microsoft Edge" class="h-14 hover:opacity-90 transition-opacity" />
+                                    </a>
+                                )}
+                                {browser.name === 'Firefox' && browser.active && (
+                                    <a {...props} title="Get CalcaTom for Firefox">
+                                        <img src="/brand/get-the-addon-178x60.png" alt="Get the Add-on for Firefox" class="h-14 hover:opacity-90 transition-opacity" />
+                                    </a>
+                                )}
+                                {browser.name === 'Opera' && (
+                                    <Tag
+                                        {...props}
+                                        class:list={[
+                                            isRTL ? "inline-flex items-center space-x-3 px-4 py-2 rounded-lg font-medium transition-all flex-row-reverse" : "inline-flex items-center space-x-3 px-4 py-2 rounded-lg font-medium transition-all",
+                                            {
+                                                'bg-white border border-slate-300 text-slate-700 hover:shadow-md hover:border-slate-400': browser.active,
+                                                'bg-white border border-slate-200 text-slate-700 cursor-not-allowed opacity-60': !browser.active,
+                                            }
+                                        ]}
+                                    >
+                                        <span style={`color: ${browser.color}`}>
+                                            <Icon class="w-6 h-6" />
+                                        </span>
+                                        <span>{browser.name} Store</span>
+                                    </Tag>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Image */}
+                        <div class:list={[
+                            "mt-12 md:mt-0",
+                            imageOnLeft && 'md:col-start-1'
+                        ]}>
+                            <div class="relative">
+                                <div class="rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-gray-900/5 dark:bg-slate-800 sm:p-3">
+                                    <Image 
+                                        src={feature.imageSrc} 
+                                        alt={feature.imageAlt} 
+                                        class="relative w-full rounded-xl" 
+                                        width={1200}
+                                        height={800}
+                                        loading={index === 0 ? "eager" : "lazy"}
+                                        format="webp"
+                                        quality={80}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    })}
+</div>
+
+<style>
+    /* RTL specific styles */
+    .rtl {
+        direction: rtl;
+    }
+    
+    .rtl .text-right {
+        text-align: right;
+    }
+    
+    .rtl .ml-auto {
+        margin-left: auto;
+        margin-right: 0;
+    }
+    
+    .rtl .flex-row-reverse {
+        flex-direction: row-reverse;
+    }
+    
+    .rtl .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+        --tw-space-x-reverse: 1;
+    }
+    
+    /* Fix grid for RTL */
+    .rtl .md\\:grid-flow-col-dense {
+        grid-auto-flow: column dense;
+    }
+    
+    .rtl .md\\:col-start-1 {
+        grid-column-start: 1;
+    }
+    
+    .rtl .md\\:col-start-2 {
+        grid-column-start: 2;
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+title: "Demystifying Astro Islands: A Practical Guide"
+excerpt: "Astro's 'islands' architecture is a game-changer for web performance. In this article, we break down what they are, how they work, and how you can use them to build faster websites."
+date: "2024-07-15"
+category: "Astro"
+author: "john-smith"
+image: "https://picsum.photos/seed/demystifying-astro-islands/1200/600"
+lang: "en"
+---
+
+## What are Astro Islands?
+
+Astro Islands are a new approach to building websites that deliver less JavaScript to the client by default. The key idea is that most of a content-focused website is static, with pockets of interactivity. These pockets are the 'islands'.
+
+### How they work
+
+1.  **Server-Side Rendering (SSR):** Astro renders your entire page to static HTML on the server.
+2.  **Zero JS by Default:** No client-side JavaScript is loaded for your UI components automatically.
+3.  **Hydration on Demand:** You explicitly mark which components need to be interactive on the client using `client:*` directives. Astro then automatically hydrates these components (and only these components) when they become visible, are clicked, or the page finishes loading.
+
+This means your users get a super-fast initial page load, and the JavaScript for interactive elements is only loaded when it's actually needed.

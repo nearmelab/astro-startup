@@ -1,0 +1,26 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { ui } from '@/i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(ui).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+---
+
+<DefaultLayout
+    title={t('about.title')}
+    description={t('about.description')}
+    image="/placeholders/tech-innovators.jpeg"
+    dir={lang === 'ar' ? 'rtl' : 'ltr'}
+>
+  <div class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold">{t('about.h1')}</h1>
+    <p class="mt-4 text-lg">Details about your company...</p>
+  </div>
+</DefaultLayout>

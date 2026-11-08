@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { languages } from '@/i18n/ui';
+import IconCalculator from '~icons/tabler/calculator';
+import IconZap from '~icons/tabler/bolt';
+import IconClock from '~icons/tabler/clock';
+import IconShieldCheck from '~icons/tabler/shield-check';
+import IconChevronRight from '~icons/tabler/chevron-right';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map(lang => ({ params: { lang } }));
+}
+
+const t = useTranslations(Astro);
+---
+
+<Layout title={t('calcatom_page.meta_title')} description={t('calcatom_page.meta_description')}>
+    <div class="pt-24 pb-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="bg-blue-600 p-4 rounded-3xl inline-block mb-6 shadow-xl shadow-blue-200">
+                    <IconCalculator class="w-12 h-12 text-white" />
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-100 mb-6">{t('calcatom_page.title')}</h1>
+                <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    {t('calcatom_page.subtitle')}
+                </p>
+            </div>
+
+            <div class="mb-20">
+                <img 
+                    src="https://picsum.photos/seed/calc-main/1200/800" 
+                    alt={t('calcatom_page.image_alt')}
+                    class="rounded-3xl shadow-2xl border border-light-border dark:border-dark-border"
+                />
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">{t('calcatom_page.features.title')}</h2>
+                    <div class="space-y-6">
+                        <div class="flex space-x-4">
+                            <div class="bg-blue-100 p-3 rounded-xl h-fit text-blue-600"><IconZap class="w-6 h-6" /></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-1">{t('calcatom_page.features.item1.title')}</h4>
+                                <p class="text-slate-500 dark:text-slate-400">{t('calcatom_page.features.item1.description')}</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="bg-orange-100 p-3 rounded-xl h-fit text-orange-600"><IconClock class="w-6 h-6" /></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-1">{t('calcatom_page.features.item2.title')}</h4>
+                                <p class="text-slate-500 dark:text-slate-400">{t('calcatom_page.features.item2.description')}</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="bg-green-100 p-3 rounded-xl h-fit text-green-600"><IconShieldCheck class="w-6 h-6" /></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-1">{t('calcatom_page.features.item3.title')}</h4>
+                                <p class="text-slate-500 dark:text-slate-400">{t('calcatom_page.features.item3.description')}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-3xl border border-light-border dark:border-dark-border">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">{t('calcatom_page.pricing.title')}</h2>
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-slate-900 dark:text-slate-100">{t('calcatom_page.pricing.plan_standard.title')}</span>
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold uppercase tracking-widest">{t('calcatom_page.pricing.plan_standard.badge')}</span>
+                        </div>
+                        <p class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-4">{t('calcatom_page.pricing.plan_standard.price')}</p>
+                        <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center"><IconChevronRight class="w-4 h-4 mr-2 text-blue-600" /> {t('calcatom_page.pricing.plan_standard.feature1')}</li>
+                            <li class="flex items-center"><IconChevronRight class="w-4 h-4 mr-2 text-blue-600" /> {t('calcatom_page.pricing.plan_standard.feature2')}</li>
+                            <li class="flex items-center"><IconChevronRight class="w-4 h-4 mr-2 text-blue-600" /> {t('calcatom_page.pricing.plan_standard.feature3')}</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-light-border dark:border-dark-border opacity-60">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-slate-900 dark:text-slate-200">{t('calcatom_page.pricing.plan_pro.title')}</span>
+                            <span class="bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-2 py-1 rounded text-xs font-bold uppercase tracking-widest">{t('calcatom_page.pricing.plan_pro.badge')}</span>
+                        </div>
+                        <p class="text-2xl font-bold text-slate-400">{t('calcatom_page.pricing.plan_pro.price')}</p>
+                        <p class="text-sm text-slate-400 mt-2">{t('calcatom_page.pricing.plan_pro.description')}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-8">{t('calcatom_page.cta.title')}</h2>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <button class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-100">{t('calcatom_page.cta.button1')}</button>
+                    <button class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-black transition-colors shadow-lg shadow-slate-200">{t('calcatom_page.cta.button2')}</button>
+                    <button class="border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">{t('calcatom_page.cta.button3')}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

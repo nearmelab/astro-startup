@@ -1,0 +1,148 @@
+---
+import InteractiveFormWrapper from './InteractiveFormWrapper.astro';
+
+import IconReact from '~icons/tabler/brand-react';
+import IconTypescript from '~icons/tabler/brand-typescript';
+import IconAstro from '~icons/tabler/brand-astro';
+import IconChrome from '~icons/tabler/brand-chrome';
+import IconAws from '~icons/tabler/brand-aws';
+import IconEdge from '~icons/tabler/brand-edge';
+import IconCss3 from '~icons/tabler/brand-css3';
+import IconFigma from '~icons/tabler/brand-figma';
+import IconFirefox from '~icons/tabler/brand-firefox';
+import IconOpera from '~icons/tabler/brand-opera';
+import IconGit from '~icons/tabler/brand-git';
+import IconGithub from '~icons/tabler/brand-github';
+import IconGraphql from '~icons/tabler/brand-graphql';
+import IconJavascript from '~icons/tabler/brand-javascript';
+import IconHtml5 from '~icons/tabler/brand-html5';
+import IconBitbucket from '~icons/tabler/brand-bitbucket';
+import IconCSharp from '~icons/tabler/brand-c-sharp';
+import IconNodejs from '~icons/tabler/brand-nodejs';
+import IconWordpress from '~icons/tabler/brand-wordpress';
+import IconGitlab from '~icons/tabler/brand-gitlab';
+import { useTranslations } from '@/i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
+
+export interface Props {
+    t?: ReturnType<typeof useTranslations>;
+    lang?: string;
+}
+
+const { t: propT, lang: propLang } = Astro.props as Props;
+
+// If lang or t not passed as props, detect from URL
+const lang = propLang || getLangFromUrl(Astro.url);
+const t = propT || useTranslations(lang);
+const isRTL = lang === 'ar'; // Add more RTL languages if needed
+
+const clientLogos = [
+  { component: IconReact, alt: 'React' },
+  { component: IconTypescript, alt: 'TypeScript' },
+  { component: IconAstro, alt: 'Astro' },
+  { component: IconChrome, alt: 'Chrome' },
+  { component: IconAws, alt: 'AWS' },
+  { component: IconEdge, alt: 'Edge' },
+  { component: IconCss3, alt: 'CSS3' },
+  { component: IconFigma, alt: 'Figma' },
+  { component: IconFirefox, alt: 'Firefox' },
+  { component: IconOpera, alt: 'Opera' },
+  { component: IconGit, alt: 'Git' },
+  { component: IconGithub, alt: 'GitHub' },
+  { component: IconGraphql, alt: 'GraphQL' },
+  { component: IconJavascript, alt: 'JavaScript' },
+  { component: IconHtml5, alt: 'HTML5' },
+  { component: IconBitbucket, alt: 'Bitbucket' },
+  { component: IconCSharp, alt: 'C#' },
+  { component: IconNodejs, alt: 'Node.js' },
+  { component: IconWordpress, alt: 'WordPress' },
+  { component: IconGitlab, alt: 'GitLab' },
+];
+
+// Debug: Log the detected language (remove after fixing)
+console.log(`Hero component - Detected language: ${lang}`);
+---
+
+<section class="relative bg-black text-white py-20 lg:py-32 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+  <div class="absolute top-0 left-0 -translate-x-1/2 w-[1000px] h-[1000px] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.3)_0%,_transparent_70%)] blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 translate-x-1/3 w-[1000px] h-[1000px] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.3)_0%,_transparent_70%)] blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+    
+    <div class={isRTL ? 'max-w-4xl mx-auto text-center mb-16' : 'max-w-4xl mx-auto text-center mb-16'}>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+        {t('hero.title.prefix')}
+        <span class="text-primary">{t('hero.title.highlight1')}</span> & 
+        <span class="text-primary">{t('hero.title.highlight2')}</span>
+        {t('hero.title.suffix')}
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+        {t('hero.subtitle')}
+      </p>
+    </div>
+
+    <!-- Reorder grid for RTL -->
+    <div class={isRTL ? 'grid lg:grid-cols-2 items-end gap-16' : 'grid lg:grid-cols-2 items-end gap-16'}>
+      
+      <!-- Left Side: Client Logos Grid (becomes right in RTL) -->
+      <div class={isRTL ? 'w-full order-2' : 'w-full order-1'}>
+        <div class="grid grid-cols-5 gap-x-8 gap-y-10 items-center justify-items-center">
+          {clientLogos.map(logo => (
+            <div class="h-14 w-14 flex items-center justify-center">
+              <logo.component height="100%" width="100%" class="h-full w-full text-white opacity-70 hover:opacity-100 transition-opacity" aria-label={logo.alt} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Side: Interactive Form Wrapper (becomes left in RTL) -->
+      <div class={isRTL ? 'w-full order-2' : 'w-full order-1'}>
+        <InteractiveFormWrapper t={t} lang={lang}/>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* RTL specific styles */
+  [dir="rtl"] section {
+    direction: rtl;
+  }
+  
+  /* Ensure proper spacing in RTL */
+  [dir="rtl"] .grid-cols-2 {
+    direction: rtl;
+  }
+  
+  /* Fix grid order for RTL */
+  [dir="rtl"] .lg\\:grid-cols-2 {
+    direction: rtl;
+  }
+  
+  /* Adjust icon grid for RTL */
+  [dir="rtl"] .grid-cols-5 {
+    direction: rtl;
+  }
+  
+  /* Ensure text alignment */
+  [dir="rtl"] .text-center {
+    text-align: center;
+  }
+  
+  /* Fix any margin/padding issues */
+  [dir="rtl"] .gap-16 {
+    gap: 4rem;
+  }
+  
+  /* Adjust gradient blobs for RTL */
+  [dir="rtl"] .absolute.top-0.left-0 {
+    left: auto;
+    right: 0;
+  }
+  
+  [dir="rtl"] .absolute.bottom-0.right-0 {
+    right: auto;
+    left: 0;
+  }
+</style>

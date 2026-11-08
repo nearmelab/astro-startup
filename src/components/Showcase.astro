@@ -1,0 +1,126 @@
+---
+import IconTablerBolt from '~icons/tabler/bolt';
+import calcatomDark from '../assets/calcatom-dark.png';
+import IconBrandEdge from '~icons/tabler/brand-edge';
+import IconBrandFirefox from '~icons/tabler/brand-firefox';
+import IconBrandOpera from '~icons/tabler/brand-opera';
+
+export interface Props {
+    t: (key: string) => any; 
+}
+
+const { t } = Astro.props as Props;
+const showcase = t('showcase');
+const features = t('features');
+
+const featuresItems = [
+  features.item1,
+  features.item2,
+  features.item3,
+  features.item4
+];
+
+const browsers = [
+    {
+        name: 'Edge',
+        icon: IconBrandEdge,
+        color: '#0078D7',
+        link: 'https://microsoftedge.microsoft.com/addons/detail/calcatom/onhimnegejpdmplijeeppdinkeblpofm',
+        active: true
+    },
+    {
+        name: 'Firefox',
+        icon: IconBrandFirefox,
+        color: '#FF7139',
+        link: 'https://addons.mozilla.org/en-US/firefox/addon/calcatom',
+        active: true
+    },
+    {
+        name: 'Opera',
+        icon: IconBrandOpera,
+        color: '#ff1b2d',
+        link: '#',
+        active: false
+    }
+];
+---
+
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="order-2 lg:order-1">
+                <img 
+                    src={calcatomDark.src} 
+                    alt={showcase.image_alt} 
+                    class="rounded-3xl shadow-2xl border border-slate-100 h-[600px]"
+                />
+            </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-4">{showcase.eyebrow}</h2>
+                <h3 class="text-4xl font-extrabold text-slate-900 mb-6">{showcase.title}</h3>
+                <p class="text-xl text-slate-600 mb-8">
+                    {showcase.subtitle}
+                </p>
+                
+                <ul class="space-y-4 mb-10">
+                    {featuresItems.map((feature) => (
+                        <li class="flex items-center text-slate-700">
+                            <div class="mr-3 bg-blue-100 p-1 rounded-full">
+                                <IconTablerBolt class="w-4 h-4 text-blue-600" />
+                            </div>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+
+                <div class="space-y-6">
+                    <p class="font-semibold text-slate-900">Available on:</p>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        {browsers.map(browser => {
+                            const Icon = browser.icon;
+                            const Tag = browser.active ? 'a' : 'div';
+                            const props = browser.active ? { href: browser.link, target: '_blank', rel: 'noopener noreferrer' } : {};
+
+                            if (browser.name === 'Edge' && browser.active) {
+                                return (
+                                    <a {...props} title="Get CalcaTom from Microsoft Edge">
+                                        <img src="/brand/english-get-it-ms-edge.png" alt="Get it from Microsoft Edge" class="h-14 hover:opacity-90 transition-opacity" />
+                                    </a>
+                                );
+                            }
+
+                            if (browser.name === 'Firefox' && browser.active) {
+                                return (
+                                    <a {...props} title="Get CalcaTom for Firefox">
+                                        <img src="/brand/get-the-addon-178x60.png" alt="Get the Add-on for Firefox" class="h-14 hover:opacity-90 transition-opacity" />
+                                    </a>
+                                );
+                            }
+
+                            return (
+                                <Tag
+                                    {...props}
+                                    class:list={[
+                                        "flex items-center space-x-3 px-4 py-2 rounded-lg font-medium transition-all",
+                                        {
+                                            'bg-white border border-slate-300 text-slate-700 hover:shadow-md hover:border-slate-400': browser.active,
+                                            'bg-white border border-slate-200 text-slate-700 cursor-not-allowed opacity-60': !browser.active,
+                                        }
+                                    ]}
+                                >
+                                    <span style={`color: ${browser.color}`}>
+                                        <Icon class="w-6 h-6" />
+                                    </span>
+                                    <span>{browser.name} Store</span>
+                                </Tag>
+                            );
+                        })}
+                    </div>
+                    <a href="/calcatom" class="inline-block text-blue-600 font-bold hover:underline pt-2">
+                        {showcase.link}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

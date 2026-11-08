@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import IconFacebook from '~icons/tabler/brand-facebook';
+import IconX from '~icons/tabler/brand-x';
+import IconLinkedin from '~icons/tabler/brand-linkedin';
+import { getLangFromUrl } from '../i18n/utils';
+import logoDark from '../assets/logos/png/header-logo-transparent-dark.png';
+
+export interface Props {
+    t: (key: string) => any;
+}
+
+const { t } = Astro.props as Props;
+
+const lang = getLangFromUrl(Astro.url);
+const isRTL = lang === 'ar'; // Add more RTL languages if needed
+
+const tarikUrl = `https://tarik.nearmelab.digital`;
+
+const footer = t('footer') || {};
+
+const socialLinks = [
+    { href: "https://www.linkedin.com/company/nearmelab", icon: IconLinkedin, label: "LinkedIn" },
+    { href: "https://facebook.com/nearmelab", icon: IconFacebook, label: "Facebook" },
+    { href: "https://x.com/nearmelab", icon: IconX, label: "X" },
+];
+---
+
+<footer class="bg-gray-800 text-white" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <!-- Logo, Address, and Email -->
+            <div class="col-span-1 md:col-span-2">
+                <div class={isRTL ? 'flex items-center justify-start' : 'flex items-center'}>
+                    <Image 
+                        src={logoDark} 
+                        alt="Nearmelab Logo" 
+                        class="h-10 w-auto"
+                        width={160}
+                        height={40}
+                        loading="lazy"
+                        decoding="async"
+                        format="webp"
+                    />
+                </div>
+                <div class={isRTL ? 'mt-4 text-sm text-gray-400 text-right' : 'mt-4 text-sm text-gray-400'}>
+                    <p>{footer.contact_location || 'Ouarzazate, Tarmigt 45000'}</p>
+                    <a href={`mailto:${footer.contact_email || 'support@nearmelab.digital'}`} class="mt-2 inline-block hover:text-white">
+                        {footer.contact_email || 'support@nearmelab.digital'}
+                    </a>
+                </div>
+                <div class={isRTL ? 'mt-4 text-sm text-gray-400 text-right' : 'mt-4 text-sm text-gray-400'}>
+                    <p>
+                        {footer.made_by} 
+                        <a 
+                            href={tarikUrl}
+                            class="inline-block font-bold underline hover:text-white"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                             {footer.made_by_author}
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h3 class={isRTL ? 'font-bold uppercase text-right' : 'font-bold uppercase'}>Links</h3>
+                <nav class={isRTL ? 'mt-4 flex flex-col space-y-2 text-sm text-gray-400 !items-start' : 'mt-4 flex flex-col space-y-2 text-sm text-gray-400'}>
+                    <a href={`/${lang}/services`} class="hover:opacity-75">{footer.privacy_link }</a>
+                    <a href={`/${lang}/contact`} class="hover:opacity-75">{footer.contact_title }</a>
+                </nav>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h3 class={isRTL ? 'font-bold uppercase text-right' : 'font-bold uppercase'}>Legal</h3>
+                <nav class={isRTL ? 'mt-4 flex flex-col space-y-2 text-sm text-gray-400  !items-start' : 'mt-4 flex flex-col space-y-2 text-sm text-gray-400'}>
+                    <a href={`/${lang}/terms`} class="hover:opacity-75">{footer.terms_link }</a>
+                    <a href={`/${lang}/privacy`} class="hover:opacity-75">{footer.privacy_link }</a>
+                </nav>
+            </div>
+
+            <!-- Social -->
+            <div>
+                <h3 class={isRTL ? 'font-bold uppercase text-right' : 'font-bold uppercase'}>Social</h3>
+                <div class={isRTL ? 'mt-4 flex  gap-x-2 !items-start' : 'mt-4 flex space-x-2'}>
+                    {socialLinks.map(link => (
+                        <a 
+                            href={link.href} 
+                            class="text-gray-400 hover:text-white" 
+                            aria-label={link.label} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <link.icon class="w-6 h-6" aria-hidden="true" />
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+  /* RTL specific styles for Tailwind v4 */
+  [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+  
+  [dir="rtl"] .flex-col.space-y-2 {
+    align-items: flex-end;
+  }
+  
+  [dir="rtl"] .gap-8 {
+    gap: 2rem;
+  }
+  
+  /* Ensure proper text alignment */
+  [dir="rtl"] .text-right {
+    text-align: right;
+  }
+</style>

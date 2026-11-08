@@ -1,0 +1,159 @@
+---
+import IconGlobe from '~icons/tabler/world';
+import IconChevronDown from '~icons/tabler/chevron-down';
+import { languages, defaultLang } from '../i18n/ui';
+
+export interface Props {
+    lang: string;
+    isRTL?: boolean;
+    isLight?: boolean;
+}
+
+const { lang, isRTL = false, isLight = false } = Astro.props;
+
+const textColor = isLight ? 'text-slate-900' : 'text-white';
+const hoverBg = isLight ? 'hover:bg-slate-100' : 'hover:bg-white/10';
+const dropdownBg = isLight ? 'bg-white' : 'bg-gray-800';
+const dropdownText = isLight ? 'text-slate-900' : 'text-white';
+const dropdownHover = isLight ? 'hover:bg-slate-100' : 'hover:bg-white/10';
+
+function getTranslatedPath(targetLang: string) {
+    const pathSegments = Astro.url.pathname.split('/').filter(segment => segment);
+    
+    // If the first segment is a language, remove it
+    if (pathSegments.length > 0 && Object.keys(languages).includes(pathSegments[0])) {
+        pathSegments.shift();
+    }
+    
+    // Always add the target language prefix (since prefixDefaultLocale: true)
+    pathSegments.unshift(targetLang);
+    
+    // Build the new path
+    let newPath = '/' + pathSegments.join('/');
+    
+    // Handle trailing slash consistency
+    if (Astro.url.pathname.endsWith('/') && !newPath.endsWith('/')) {
+        newPath += '/';
+    }
+    
+    return newPath;
+}
+---
+
+<div class="relative" id="language-switcher-container" client:load>
+    <button 
+        id="language-switcher-button" 
+        type="button"
+        class:list={[
+            "flex items-center gap-x-2 px-3 py-2 rounded-lg font-medium transition-colors",
+            textColor,
+            hoverBg
+        ]}
+        aria-label="Switch language"
+    >
+        <IconGlobe class="w-5 h-5" />
+        <span class="hidden sm:inline">{languages[lang as keyof typeof languages]}</span>
+        <IconChevronDown class="w-4 h-4" />
+    </button>
+    
+    <div 
+        id="language-switcher-dropdown" 
+        class:list={[
+            "hidden absolute mt-2 w-48 rounded-lg shadow-lg ring-1 ring-black/5 focus:outline-none z-50",
+            dropdownBg,
+            isRTL ? 'left-0' : 'right-0'
+        ]}
+    >
+        <div class="py-1">
+            {Object.entries(languages).map(([code, label]) => {
+                const isCurrent = code === lang;
+                const href = getTranslatedPath(code);
+                
+                return (
+                    <a
+                        href={href}
+                        class:list={[
+                            "block px-4 py-2 text-sm transition-colors",
+                            dropdownText,
+                            dropdownHover,
+                            isCurrent ? 'font-bold bg-primary/10 text-primary' : ''
+                        ]}
+                        data-lang={code}
+                    >
+                        {label}
+                        {isCurrent && (
+                            <span class="ml-2 text-primary">✓</span>
+                        )}
+                    </a>
+                );
+            })}
+        </div>
+    </div>
+</div>
+
+<script>
+    function initLanguageSwitcher() {
+        const button = document.getElementById('language-switcher-button');
+        const dropdown = document.getElementById('language-switcher-dropdown');
+        const container = document.getElementById('language-switcher-container');
+        
+        if (!button || !dropdown || !container) {
+            console.warn('Language switcher elements not found');
+            return;
+        }
+
+        // Remove existing listeners by cloning
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        const newDropdown = dropdown.cloneNode(true);
+        dropdown.parentNode.replaceChild(newDropdown, dropdown);
+        
+        const newContainer = container.cloneNode(true);
+        container.parentNode.replaceChild(newContainer, container);
+
+        const freshButton = document.getElementById('language-switcher-button');
+        const freshDropdown = document.getElementById('language-switcher-dropdown');
+        const freshContainer = document.getElementById('language-switcher-container');
+
+        if (!freshButton || !freshDropdown || !freshContainer) return;
+
+        // Toggle dropdown on button click
+        freshButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            freshDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (freshContainer && !freshContainer.contains(e.target as Node)) {
+                freshDropdown.classList.add('hidden');
+            }
+        });
+
+        // Close dropdown when pressing Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                freshDropdown.classList.add('hidden');
+            }
+        });
+
+        // Close dropdown when clicking a language link
+        freshDropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                freshDropdown.classList.add('hidden');
+            });
+        });
+    }
+
+    // Run on page load and after Astro navigation
+    document.addEventListener('astro:page-load', initLanguageSwitcher);
+    document.addEventListener('astro:after-swap', initLanguageSwitcher);
+    
+    // Run immediately if DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+        initLanguageSwitcher();
+    }
+</script>

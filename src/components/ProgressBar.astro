@@ -1,0 +1,42 @@
+---
+// This component creates a page scroll progress bar.
+---
+
+<div class="fixed left-0 w-full h-1 z-[60]" style="top: 4rem;">
+    <div id="progressBar" class="h-full bg-primary" style="width: 0%;"></div>
+</div>
+
+<script>
+    // Simple debounced version without transforms
+    let progressBar;
+    let rafId = null;
+    
+    function updateProgressBar() {
+        if (!progressBar) return;
+        
+        const totalScrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const currentScrollPosition = window.scrollY;
+        const scrollProgress = totalScrollableHeight > 0 ? (currentScrollPosition / totalScrollableHeight) * 100 : 0;
+        
+        progressBar.style.width = `${scrollProgress}%`;
+        
+        rafId = null;
+    }
+
+    function scheduleUpdate() {
+        if (!rafId) {
+            rafId = requestAnimationFrame(updateProgressBar);
+        }
+    }
+
+    progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        document.addEventListener('scroll', scheduleUpdate, { passive: true });
+        window.addEventListener('resize', scheduleUpdate, { passive: true });
+        document.addEventListener('astro:page-load', updateProgressBar);
+        document.addEventListener('astro:after-swap', updateProgressBar);
+        
+        // Initial calculation
+        updateProgressBar();
+    }
+</script>

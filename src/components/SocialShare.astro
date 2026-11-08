@@ -1,0 +1,50 @@
+---
+import IconBrandFacebook from '~icons/tabler/brand-facebook';
+import IconBrandX from '~icons/tabler/brand-x';
+import IconBrandLinkedin from '~icons/tabler/brand-linkedin';
+
+export interface Props {
+    url: string;
+    title: string;
+}
+
+const { url, title } = Astro.props;
+
+const platforms = [
+    {
+        name: 'Facebook',
+        icon: IconBrandFacebook,
+        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        classes: 'bg-blue-600',
+    },
+    {
+        name: 'X',
+        icon: IconBrandX,
+        url: `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+        classes: 'bg-black',
+    },
+    {
+        name: 'LinkedIn',
+        icon: IconBrandLinkedin,
+        url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+        classes: 'bg-blue-800',
+    },
+];
+---
+
+<div class="sticky top-32 z-40 hidden lg:block">
+    <div class="flex flex-col items-center gap-y-3">
+        <span class="text-sm font-semibold uppercase tracking-wider text-medium-text-light dark:text-medium-text mb-2">Share</span>
+        {platforms.map(platform => (
+            <a 
+                href={platform.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label={`Share on ${platform.name}`}
+                class:list={["btn btn-square text-white transition-none", platform.classes]}
+            >
+                <platform.icon class="w-8 h-8" />
+            </a>
+        ))}
+    </div>
+</div>

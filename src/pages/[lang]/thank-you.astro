@@ -1,0 +1,34 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import { ui } from '@/i18n/ui';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+export function getStaticPaths() {
+  return Object.keys(ui).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const seo = {
+    title: t('thank_you.seo.title'),
+    description: t('thank_you.seo.description'),
+};
+---
+
+<DefaultLayout {seo}>
+    <div class="container text-center py-20">
+        <h1 class="text-4xl font-bold mb-4">{t('thank_you.title')}</h1>
+        <p class="text-lg">{t('thank_you.message')}</p>
+        <a href={`/${lang}/`} class="btn btn-primary mt-8">{t('thank_you.home_button')}</a>
+    </div>
+</DefaultLayout>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+</style>

@@ -1,0 +1,22 @@
+---
+export interface Props {
+    href: string;
+    currentPage: string;
+    class?: string;
+    ariaCurrent?: string;
+}
+
+const { href, currentPage, class: className, ...rest } = Astro.props;
+
+// Check if the current page is a sub-page of the link's href
+const isActive = currentPage.startsWith(href) && href.length > 3;
+---
+
+<a href={href} class:list={["flex items-center gap-x-2 font-medium transition-colors", className]} {...rest}>
+    {isActive && (
+        <span class="h-2.5 w-2.5 rounded-full border-2 border-primary"></span>
+    )}
+    <span>
+        <slot />
+    </span>
+</a>

@@ -1,0 +1,35 @@
+---
+import { languages } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import ClientResults from '@/components/ClientResults.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import Features from '@/components/Features.astro';
+import Stats from '@/components/Stats.astro';
+import Products from '@/components/Products.astro';
+
+// export function getStaticPaths() {
+//   return Object.keys(languages).map(lang => ({
+//     params: { lang }
+//   }));
+// }
+
+export const prerender = false;
+
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang);
+---
+
+<Layout 
+    title={t('site.title')}
+    description={t('site.description')}
+>
+    <Hero t={t} lang={lang} />
+    <ClientResults t={t} />
+    <Testimonials t={t} />
+    <Products t={t} />
+    <Features t={t} />
+    <Stats t={t} />
+</Layout>

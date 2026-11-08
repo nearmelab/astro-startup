@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+    description: string;
+}
+
+const { title } = Astro.props;
+const description = "Website design, Productivity tools & Ecommerce solution for makers and sellers. We help you show up everywhere customers are searching, swiping, scrolling, streaming, and shopping.";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<meta charset="UTF-8" />
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+
+<!-- Theme Switcher Script -->
+<script is:inline>
+    const theme = (() => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    })();
+
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+</script>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content="/images/social.jpeg" />
+<meta property="og:image:alt" content="A banner with the CalcaTom logo and the text 'The Ultimate All-in-One Calculator for Your Browser'" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content="/images/social.jpeg" />

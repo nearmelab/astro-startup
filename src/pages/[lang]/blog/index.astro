@@ -1,0 +1,42 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { languages } from '@/i18n/ui';
+import BlogGrid from '@/components/BlogGrid.tsx';
+
+export function getStaticPaths() {
+    return Object.keys(languages).map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+// Correctly point to the content directory
+const enPosts = await Astro.glob('../../../content/blog/en/*.mdx');
+const arPosts = await Astro.glob('../../../content/blog/ar/*.mdx');
+const allPosts = lang === 'ar' ? arPosts : enPosts;
+
+const posts = allPosts.map(post => ({
+    slug: post.file.split('/').pop().replace(/\.mdx?$/, ''),
+    title: post.frontmatter.title,
+    excerpt: post.frontmatter.excerpt,
+    date: new Date(post.frontmatter.date).toLocaleDateString(lang, { // Localize the date format
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }),
+    category: post.frontmatter.category,
+    img: post.frontmatter.image,
+}));
+---
+
+<DefaultLayout title={t('blog.title')} description={t('blog.description')}>
+    <div class="container mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-dark-text dark:text-light-text">{t('blog.title')}</h1>
+            <p class="mt-4 text-lg text-medium-text-light dark:text-medium-text max-w-2xl mx-auto">{t('blog.description')}</p>
+        </div>
+
+        <BlogGrid client:load posts={posts} readMoreText={t('blog.readMore')} lang={lang} />
+    </div>
+</DefaultLayout>

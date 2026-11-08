@@ -1,0 +1,86 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import { actions, isInputError } from 'astro:actions';
+
+interface Props {
+    t: ReturnType<typeof useTranslations>;
+    lang: string;
+    result?: any;
+    inputErrors?: any;
+}
+
+const { t, lang, result, inputErrors = {} } = Astro.props;
+---
+
+<div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-lg shadow-lg p-6 sm:p-8 max-w-lg w-full m-4 max-h-[90vh] overflow-y-auto">
+        
+        <!-- Success Message -->
+        {result?.data?.success && (
+            <div class="text-center p-4 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-lg">
+                <h2 class="text-xl font-bold mb-2">{t('modal.success_title')}</h2>
+                <p>{result.data.message}</p>
+                <p class="text-sm mt-2">Redirecting you...</p>
+            </div>
+        )}
+
+        <!-- General Error Message -->
+        {result?.error && !isInputError(result.error) && (
+             <div class="text-center p-4 bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200 rounded-lg">
+                <h2 class="text-xl font-bold mb-2">{t('modal.error_title')}</h2>
+                <p>{result.error.message}</p>
+                <button id="close-modal-button-error" type="button" class="mt-4 text-slate-600 dark:text-slate-400 hover:underline">{t('modal.close_button')}</button>
+            </div>
+        )}
+
+        <!-- Contact Form -->
+        {(!result || result?.error) && (
+            <form method="POST" action={actions.email.send} id="contact-form-main">
+                <h2 class="text-2xl font-bold text-center mb-6 text-slate-900 dark:text-slate-100">{t('modal.title')}</h2>
+                
+                <input type="hidden" name="lang" value={lang} />
+                <input type="hidden" id="selected-services-input" name="services" />
+
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-slate-800 dark:text-slate-200">{t('modal.selected_services')}</h3>
+                    <div id="selected-services-list" class="flex flex-wrap gap-2 mt-2"></div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t('services_form.details_label')}</label>
+                    <textarea id="message" name="message" rows="4" required minlength="10" class:list={["w-full p-3 border rounded-lg bg-white dark:bg-dark-bg text-slate-900 dark:text-slate-100", { 'border-red-500': inputErrors.message, 'border-light-border dark:border-dark-border': !inputErrors.message }]} placeholder={t('services_form.details_placeholder')} transition:persist>{Astro.request.body?.get('message')}</textarea>
+                    {inputErrors.message && <p class="text-sm text-red-500 mt-1">{inputErrors.message}</p>}
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t('modal.name')}</label>
+                        <input type="text" id="name" name="name" required minlength="2" class:list={["w-full p-3 border rounded-lg bg-white dark:bg-dark-bg text-slate-900 dark:text-slate-100", { 'border-red-500': inputErrors.name, 'border-light-border dark:border-dark-border': !inputErrors.name }]} transition:persist value={Astro.request.body?.get('name')} />
+                        {inputErrors.name && <p class="text-sm text-red-500 mt-1">{inputErrors.name}</p>}
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t('modal.email')}</label>
+                        <input type="email" id="email" name="email" required class:list={["w-full p-3 border rounded-lg bg-white dark:bg-dark-bg text-slate-900 dark:text-slate-100", { 'border-red-500': inputErrors.email, 'border-light-border dark:border-dark-border': !inputErrors.email }]} transition:persist value={Astro.request.body?.get('email')} />
+                        {inputErrors.email && <p class="text-sm text-red-500 mt-1">{inputErrors.email}</p>}
+                    </div>
+                </div>
+
+                <div class="flex justify-end items-center gap-4">
+                    <button 
+                        id="close-modal-button-form" 
+                        type="button" 
+                        class="px-6 py-3 border border-slate-300 dark:border-dark-border rounded-lg text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-50 dark:hover:bg-dark-hover transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400 dark:focus:ring-offset-dark-bg"
+                    >
+                        {t('modal.cancel_button')}
+                    </button>
+                    <button 
+                        type="submit" 
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                    >
+                        {t('modal.submit_button')}
+                    </button>
+                </div>
+            </form>
+        )}
+    </div>
+</div>

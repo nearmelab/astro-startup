@@ -1,0 +1,157 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+export interface Props {
+    t: (key: string) => any;
+}
+
+const { t } = Astro.props as Props;
+
+const lang = getLangFromUrl(Astro.url);
+const isRTL = lang === 'ar';
+
+const statsData = [
+    { value: 61, description: t('stats.edge_downloads') },
+    { value: 7, description: t('stats.firefox_downloads') },
+    { value: 1196, description: t('stats.opera_downloads') },
+    { value: 3050, description: t('stats.nuget_downloads') }
+];
+
+const sortedStats = statsData.sort((a, b) => a.value - b.value);
+
+const backgroundColors = [
+    'bg-indigo-500',
+    'bg-indigo-600',
+    'bg-indigo-700',
+    'bg-indigo-800'
+];
+---
+
+<section dir={isRTL ? 'rtl' : 'ltr'}>
+    <div class={isRTL ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 rtl' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'}>
+        {sortedStats.map((stat, index) => {
+            const isK = stat.value >= 1000;
+            const displayValue = isK ? (stat.value / 1000).toFixed(1) : stat.value;
+            const finalValue = isK ? parseFloat(displayValue) : stat.value;
+            
+            return (
+                <div class={isRTL ? `p-8 text-center text-white ${backgroundColors[index]} rtl` : `p-8 text-center text-white ${backgroundColors[index]}`}>
+                    <p class={isRTL ? 'flex justify-center items-baseline flex-row-reverse' : 'flex justify-center items-baseline'}>
+                        <span class="text-7xl font-normal text-indigo-200">+</span>
+                        <span class={isRTL ? 'font-bold text-7xl mr-2 stat-value' : 'font-bold text-7xl ml-2 stat-value'} 
+                              data-final-value={finalValue}
+                              data-is-k={isK}
+                              data-original-value={stat.value}>
+                            0
+                        </span>
+                        {isK && <span class={isRTL ? 'text-7xl font-normal text-indigo-200 mr-2' : 'text-7xl font-normal text-indigo-200 ml-2'}>k</span>}
+                    </p>
+                    <p class={isRTL ? 'mt-2 text-base font-semibold text-black text-right' : 'mt-2 text-base font-semibold text-black'}>{stat.description}</p>
+                </div>
+            );
+        })}
+    </div>
+</section>
+
+<script>
+  (function() {
+    if (typeof gsap === 'undefined') {
+      import('gsap').then(({ gsap }) => {
+        import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+          gsap.registerPlugin(ScrollTrigger);
+          initCounters(gsap, ScrollTrigger);
+        });
+      });
+    } else {
+      const { gsap } = window;
+      const { ScrollTrigger } = window;
+      gsap.registerPlugin(ScrollTrigger);
+      initCounters(gsap, ScrollTrigger);
+    }
+
+    function initCounters(gsap, ScrollTrigger) {
+      setTimeout(() => {
+        const statElements = document.querySelectorAll('.stat-value');
+        
+        if (statElements.length === 0) return;
+        
+        statElements.forEach(el => {
+          const finalValue = parseFloat(el.dataset.finalValue);
+          const isK = el.dataset.isK === 'true';
+          const originalValue = parseInt(el.dataset.originalValue);
+          
+          if (isNaN(finalValue)) return;
+          
+          el.innerText = '0';
+          
+          ScrollTrigger.create({
+            trigger: el.closest('div[class*="bg-indigo"]'),
+            start: 'top 85%',
+            onEnter: () => {
+              if (isK) {
+                // For K values, animate with one decimal
+                gsap.to(el, {
+                  innerText: finalValue,
+                  duration: 2.5,
+                  snap: { innerText: 0.1 },
+                  ease: 'power2.out',
+                  modifiers: {
+                    innerText: (value) => {
+                      const num = parseFloat(value);
+                      if (num >= finalValue) {
+                        return finalValue % 1 === 0 ? finalValue : finalValue.toFixed(1);
+                      }
+                      return num.toFixed(1);
+                    }
+                  }
+                });
+              } else {
+                // For regular values, animate as integers
+                gsap.to(el, {
+                  innerText: finalValue,
+                  duration: 2.5,
+                  snap: { innerText: 1 },
+                  ease: 'power2.out',
+                  modifiers: {
+                    innerText: (value) => {
+                      const num = Math.floor(parseFloat(value));
+                      return num > finalValue ? finalValue.toString() : num.toString();
+                    }
+                  }
+                });
+              }
+            },
+            once: true
+          });
+        });
+        
+        ScrollTrigger.refresh();
+      }, 250);
+    }
+  })();
+</script>
+
+<style>
+    /* RTL specific styles */
+    .rtl {
+        direction: rtl;
+    }
+    
+    .rtl .text-right {
+        text-align: right;
+    }
+    
+    .rtl .flex-row-reverse {
+        flex-direction: row-reverse;
+    }
+    
+    .rtl .mr-2 {
+        margin-right: 0;
+        margin-left: 0.5rem;
+    }
+    
+    .rtl .ml-2 {
+        margin-left: 0;
+        margin-right: 0.5rem;
+    }
+</style>

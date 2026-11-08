@@ -1,0 +1,61 @@
+---
+import IconTablerCalculator from '~icons/tabler/calculator';
+import IconTablerGlobe from '~icons/tabler/globe';
+import IconTablerBolt from '~icons/tabler/bolt';
+import IconTablerMessageCircle from '~icons/tabler/message-circle';
+
+export interface Props {
+    t: (key: string) => any; 
+}
+
+const { t } = Astro.props as Props;
+const roadmap = t('roadmap');
+
+const roadmapItems = [
+    {
+        date: roadmap.item1.date,
+        title: roadmap.item1.title,
+        description: roadmap.item1.description,
+        icon: IconTablerCalculator
+    },
+    {
+        date: roadmap.item2.date,
+        title: roadmap.item2.title,
+        description: roadmap.item2.description,
+        icon: IconTablerGlobe
+    },
+    {
+        date: roadmap.item3.date,
+        title: roadmap.item3.title,
+        description: roadmap.item3.description,
+        icon: IconTablerBolt
+    }
+];
+---
+
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-slate-900 mb-16">{roadmap.title}</h2>
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+            {roadmapItems.map(item => {
+                const Icon = item.icon;
+                return (
+                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <Icon class="w-20 h-20" />
+                        </div>
+                        <p class="text-blue-600 font-bold text-sm mb-2">{item.date}</p>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">{item.title}</h4>
+                        <p class="text-slate-500">{item.description}</p>
+                    </div>
+                )
+            })}
+        </div>
+        <div class="mt-16 bg-slate-50 rounded-2xl p-8 inline-block max-w-2xl border border-slate-100">
+            <p class="text-slate-600 font-medium mb-6">{roadmap.feedback.text}</p>
+            <a href="/support" class="text-[#FF6B4A] font-bold hover:underline flex items-center justify-center">
+                {roadmap.feedback.link} <IconTablerMessageCircle class="ml-2 w-4 h-4" />
+            </a>
+        </div>
+    </div>
+</section>

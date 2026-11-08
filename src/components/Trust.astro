@@ -1,0 +1,87 @@
+---
+const { t, lang } = Astro.props;
+
+const metrics = [
+    { value: "40%", label: t('trust.metricOne.label') },
+    { value: "300%", label: t('trust.metricTwo.label') },
+    { value: "99.9%", label: t('trust.metricThree.label') }
+];
+
+const clients = [
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Client A</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Client B</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Client C</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Client D</text></svg>`
+];
+
+const clientsAr = [
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Maroc Telecom</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Attijariwafa Bank</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Royal Air Maroc</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>OCP Group</text></svg>`
+];
+
+const partners = [
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Vendure</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Astro</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Umbraco</text></svg>`,
+    `<svg viewBox='0 0 100 20' class='w-full h-full fill-current'><text x='50' y='15' text-anchor='middle' textLength='90' lengthAdjust='spacingAndGlyphs'>Unity</text></svg>`
+];
+
+const displayClients = lang === 'ar' ? clientsAr : clients;
+---
+
+<section id='trust' class='py-20 md:py-28 bg-light-card dark:bg-dark-card border-y border-light-border dark:border-dark-border'>
+    <div class='container mx-auto px-6'>
+        <div class='text-center mb-12'>
+            <h2 class='text-3xl md:text-4xl font-bold text-dark-text dark:text-light-text'>{t('about.certifications.title')}</h2>
+            <p class='mt-4 text-lg text-medium-text-light dark:text-medium-text'>{t('about.certifications.subtitle')}</p>
+        </div>
+
+        <div class='grid md:grid-cols-3 gap-12 items-center mb-16'>
+            {metrics.map(metric => (
+                <div class='text-center'>
+                    <p class='text-4xl font-bold text-primary'>{metric.value}</p>
+                    <p class='text-medium-text-light dark:text-medium-text mt-1'>{metric.label}</p>
+                </div>
+            ))}
+        </div>
+        
+        <div class='mt-16 overflow-hidden'>
+            <h3 class='text-center text-medium-text-light dark:text-medium-text uppercase tracking-widest mb-8'>{t('trust.trustedBy')}</h3>
+            <div id='logo-scroller' class='flex flex-nowrap'>
+                {displayClients.map(client => (
+                    <div class='h-8 text-neutral-400 dark:text-neutral-600 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors mx-8 flex-shrink-0' style='min-width: 150px;' set:html={client} />
+                ))}
+                <!-- Duplicate the logos for a seamless loop -->
+                {displayClients.map(client => (
+                    <div class='h-8 text-neutral-400 dark:text-neutral-600 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors mx-8 flex-shrink-0' style='min-width: 150px;' set:html={client} />
+                ))}
+            </div>
+        </div>
+
+        <div class='mt-16'>
+            <h3 class='text-center text-medium-text-light dark:text-medium-text uppercase tracking-widest mb-8'>{t('trust.techStack')}</h3>
+            <div class='flex justify-center items-center gap-x-12 md:gap-x-16 flex-wrap'>
+              {partners.map((partner) => (
+                <div class='h-8 text-neutral-400 dark:text-neutral-600 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors' set:html={partner} />
+              ))}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    #logo-scroller {
+        animation: scroll 50s linear infinite;
+    }
+</style>

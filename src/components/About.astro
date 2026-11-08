@@ -1,0 +1,39 @@
+---
+import IconTablerBrandLinkedin from '~icons/tabler/brand-linkedin';
+import IconTablerBrandGithub from '~icons/tabler/brand-github';
+import IconTablerMail from '~icons/tabler/mail';
+import gravatar from '../assets/gravatar.png';
+
+export interface Props {
+    t: (key: string) => any; 
+}
+
+const { t } = Astro.props as Props;
+const about = t('about');
+---
+
+<section id="about" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900">{about.title}</h2>
+        </div>
+        <div class="max-w-3xl mx-auto bg-white p-8 lg:p-12 rounded-3xl shadow-sm border border-slate-100">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <img 
+                    src={gravatar.src} 
+                    alt={about.image_alt} 
+                    class="w-24 h-24 rounded-2xl object-cover grayscale hover:grayscale-0 transition-all cursor-pointer"
+                />
+                <div>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6" set:html={about.bio1} />
+                    <p class="text-lg text-slate-600 leading-relaxed mb-8" set:html={about.bio2} />
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/tarikrital" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-colors"><IconTablerBrandLinkedin class="w-6 h-6" /></a>
+                        <a href="https://github.com/tarikrital" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 rounded-xl hover:bg-slate-900 hover:text-white transition-colors"><IconTablerBrandGithub class="w-6 h-6" /></a>
+                        <a href="mailto:tarik@nearmelab.digital" class="p-3 bg-slate-50 rounded-xl hover:bg-orange-50 hover:text-orange-600 transition-colors"><IconTablerMail class="w-6 h-6" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

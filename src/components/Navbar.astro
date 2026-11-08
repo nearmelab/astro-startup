@@ -1,0 +1,274 @@
+---
+import { Image } from 'astro:assets';
+import IconMenu from '~icons/tabler/menu-2';
+import IconX from '~icons/tabler/x';
+import IconChevronDown from '~icons/tabler/chevron-down';
+import IconChevronUp from '~icons/tabler/chevron-up';
+import PortfolioDropdown from './PortfolioDropdown.astro';
+import NavLink from './NavLink.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro'; // ✅ Add this import
+import { getLangFromUrl } from '../i18n/utils';
+
+// Import logo images
+import desktopLogoLight from '../assets/logos/png/header-logo-transparent-light.png';
+import desktopLogoDark from '../assets/logos/png/header-logo-transparent-dark.png';
+import mobileLogoLight from '../assets/logos/png/mobile-logo-black.png';
+import mobileLogoDark from '../assets/logos/png/mobile-logo-white.png';
+
+export interface Props {
+    theme?: 'light';
+    currentPage: string;
+    t: (key: string) => any;
+}
+
+const { theme, currentPage, t } = Astro.props as Props;
+
+const lang = getLangFromUrl(Astro.url);
+const isLight = theme === 'light';
+const isRTL = lang === 'ar';
+
+const textColor = isLight ? 'text-slate-900' : 'text-white';
+const hoverTextColor = 'hover:text-primary';
+const desktopLogoSrc = isLight ? desktopLogoLight : desktopLogoDark;
+const mobileLogoSrc = isLight ? mobileLogoLight : mobileLogoDark;
+
+const isPortfolioActive = currentPage.startsWith(`/${lang}/portfolio`);
+const header = t('header');
+const nav = t('navigation') || t('header');
+---
+
+<nav 
+  id="navbar" 
+  class:list={[
+    "w-full z-50 transition-all duration-300",
+    { 'fixed': !isLight },
+    textColor
+  ]} 
+  dir={isRTL ? 'rtl' : 'ltr'}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      
+      <!-- Logo -->
+      <a href={`/${lang}/`} class="flex items-center">
+        <Image 
+          src={desktopLogoSrc} 
+          alt="NearMeLab Logo" 
+          class="hidden md:block h-10 w-auto"
+          width={160}
+          height={40}
+          loading="eager"
+          format="webp"
+          quality={90}
+        />
+        <Image 
+          src={mobileLogoSrc} 
+          alt="NearMeLab Logo" 
+          class="block md:hidden h-10 w-auto"
+          width={40}
+          height={40}
+          loading="eager"
+          format="webp"
+          quality={90}
+        />
+      </a>
+      
+      <!-- Centered Menu for Desktop -->
+      <div class:list={[
+        "hidden md:flex absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 items-center",
+        textColor
+      ]}>
+        <NavLink href={`/${lang}/services`} currentPage={currentPage} class={[hoverTextColor, isRTL ? 'ml-8' : 'mr-8']}>
+          {nav.services || header.services}
+        </NavLink>
+        
+        <div class={isRTL ? 'ml-8' : 'mr-8'}>
+          <button id="portfolio-menu-button" type="button" class:list={[
+            "flex items-center gap-x-2 font-medium transition-colors",
+            hoverTextColor,
+            isRTL ? 'flex-row-reverse' : ''
+          ]}>
+             {isPortfolioActive && (
+                <span class="h-2.5 w-2.5 rounded-full border-2 border-primary"></span>
+            )}
+            <span>{nav.portfolio || header.portfolio}</span>
+            <IconChevronDown class:list={["w-4 h-4", isRTL ? 'rotate-180' : '']} />
+          </button>
+          <PortfolioDropdown lang={lang} currentPage={currentPage} />
+        </div>
+
+        <NavLink href={`/${lang}/blog`} currentPage={currentPage} class={[hoverTextColor, isRTL ? 'ml-8' : 'mr-8']}>
+          {nav.blog || header.blog}
+        </NavLink>
+        <NavLink href={`/${lang}/contact`} currentPage={currentPage} class={[hoverTextColor, isRTL ? 'ml-8' : 'mr-8']}>
+          {nav.contact || header.contact}
+        </NavLink>
+      </div>
+
+      <!-- Right Section (becomes Left in RTL) -->
+      <div class="flex items-center gap-x-4">
+        {/* ✅ Language Switcher */}
+        <LanguageSwitcher lang={lang} isRTL={isRTL} isLight={isLight}/>
+        
+        <div class="hidden md:flex items-center">
+          <a href={`/${lang}/contact`} class="btn btn-primary">
+            {nav.hire_us || header.hire_us}
+          </a>
+        </div>
+        <div class="md:hidden">
+             <button id="mobile-menu-button" class="p-2">
+                <span class="icon-open"><IconMenu class="w-6 h-6" /></span>
+                <span class="icon-close hidden"><IconX class="w-6 h-6" /></span>
+            </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-lg border-b border-gray-700" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div class="px-4 pt-2 pb-6 space-y-1">
+      <NavLink href={`/${lang}/services`} currentPage={currentPage} class={isRTL ? 'block px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md text-right' : 'block px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md'}>
+        {nav.services || header.services}
+      </NavLink>
+      
+      <div>
+        <button id="mobile-portfolio-button" class={isRTL ? 'w-full flex justify-between items-center px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md flex-row-reverse' : 'w-full flex justify-between items-center px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md'}>
+          <span class={isRTL ? 'flex items-center gap-x-2 flex-row-reverse' : 'flex items-center gap-x-2'}>
+            {isPortfolioActive && <span class="h-2.5 w-2.5 rounded-full border-2 border-primary"></span>}
+            {nav.portfolio || header.portfolio}
+          </span>
+          <span class="icon-chevron-down"><IconChevronDown class={isRTL ? 'w-5 h-5 rotate-180' : 'w-5 h-5'} /></span>
+          <span class="icon-chevron-up hidden"><IconChevronUp class={isRTL ? 'w-5 h-5 rotate-180' : 'w-5 h-5'} /></span>
+        </button>
+        <div id="mobile-portfolio-dropdown" class={isRTL ? 'hidden pr-4 mt-1 space-y-1 text-right' : 'hidden pl-4 mt-1 space-y-1'}>
+          <NavLink href="https://calcatom.nearmelab.digital" currentPage={currentPage} class={isRTL ? 'block px-3 py-3 text-sm font-medium text-gray-300 hover:text-primary hover:bg-white/10 rounded-md text-right' : 'block px-3 py-3 text-sm font-medium text-gray-300 hover:text-primary hover:bg-white/10 rounded-md'}>
+            {nav.portfolio_items?.calcatom || 'Calcatom'}
+          </NavLink>
+        </div>
+      </div>
+      
+      <NavLink href={`/${lang}/blog`} currentPage={currentPage} class={isRTL ? 'block px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md text-right' : 'block px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md'}>
+        {nav.blog || header.blog}
+      </NavLink>
+      <NavLink href={`/${lang}/contact`} currentPage={currentPage} class={isRTL ? 'block px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md text-right' : 'block px-3 py-4 text-base font-medium text-white hover:text-primary hover:bg-white/10 rounded-md'}>
+        {nav.contact || header.contact}
+      </NavLink>
+      
+      <div class="mt-4 px-3">
+        <a href={`/${lang}/contact`} class="btn btn-primary w-full">
+          {nav.hire_us || header.hire_us}
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  #navbar.scrolled {
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rtl {
+    direction: rtl;
+  }
+  
+  .rtl #portfolio-dropdown {
+    right: 0;
+    left: auto;
+  }
+  
+  .rtl #mobile-menu {
+    direction: rtl;
+  }
+  
+  .rtl #mobile-menu .flex {
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .md\\:flex .gap-x-2 {
+    column-gap: 0.5rem;
+  }
+  
+  [dir="rtl"] .md\\:flex > * + * {
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+</style>
+
+<script define:vars={{ isLight, isRTL }}>
+  function setupEventListeners() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = mobileMenuButton?.querySelector('.icon-open');
+    const iconClose = mobileMenuButton?.querySelector('.icon-close');
+
+    if (mobileMenuButton && mobileMenu && iconOpen && iconClose && !mobileMenuButton.dataset.listenerAttached) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+      });
+      mobileMenuButton.dataset.listenerAttached = 'true';
+    }
+
+    const portfolioButton = document.getElementById('portfolio-menu-button');
+    const portfolioDropdown = document.getElementById('portfolio-dropdown');
+
+    if (portfolioButton && portfolioDropdown && !portfolioButton.dataset.listenerAttached) {
+      portfolioButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        portfolioDropdown.classList.toggle('hidden');
+      });
+      portfolioButton.dataset.listenerAttached = 'true';
+    }
+    
+    const mobilePortfolioButton = document.getElementById('mobile-portfolio-button');
+    const mobilePortfolioDropdown = document.getElementById('mobile-portfolio-dropdown');
+    const iconChevronDown = mobilePortfolioButton?.querySelector('.icon-chevron-down');
+    const iconChevronUp = mobilePortfolioButton?.querySelector('.icon-chevron-up');
+
+    if (mobilePortfolioButton && mobilePortfolioDropdown && iconChevronDown && iconChevronUp && !mobilePortfolioButton.dataset.listenerAttached) {
+      mobilePortfolioButton.addEventListener('click', () => {
+        mobilePortfolioDropdown.classList.toggle('hidden');
+        iconChevronDown.classList.toggle('hidden');
+        iconChevronUp.classList.toggle('hidden');
+      });
+      mobilePortfolioButton.dataset.listenerAttached = 'true';
+    }
+
+    if (!isLight) {
+        const navbar = document.getElementById('navbar');
+        if (navbar && !navbar.dataset.scrollListenerAttached) {
+            const handleScroll = () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+            navbar.dataset.scrollListenerAttached = 'true';
+        }
+    }
+  }
+
+  function closeDropdownsOnOutsideClick(event) {
+      const portfolioDropdown = document.getElementById('portfolio-dropdown');
+      if (portfolioDropdown && !portfolioDropdown.classList.contains('hidden')) {
+        const portfolioButton = document.getElementById('portfolio-menu-button');
+        if (portfolioButton && !portfolioButton.contains(event.target) && !portfolioDropdown.contains(event.target)) {
+           portfolioDropdown.classList.add('hidden');
+        }
+      }
+  }
+
+  document.addEventListener('astro:page-load', setupEventListeners);
+  setupEventListeners();
+
+  document.addEventListener('click', closeDropdownsOnOutsideClick);
+</script>

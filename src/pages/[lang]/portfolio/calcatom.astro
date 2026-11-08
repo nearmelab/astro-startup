@@ -1,0 +1,30 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import Hero from '@/components/Hero.astro';
+import About from '@/components/About.astro';
+import Showcase from '@/components/Showcase.astro';
+import WhyBuilt from '@/components/WhyBuilt.astro';
+import Roadmap from '@/components/Roadmap.astro';
+import { languages } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(Astro);
+const dir = lang === 'ar' ? 'rtl' : 'ltr';
+---
+
+<DefaultLayout
+    title={t('home_page.meta_title')}
+    description={t('home_page.meta_description')}
+    dir={dir}
+>
+    <Hero t={t} />
+    <About t={t} />
+    <Showcase t={t} />
+    <WhyBuilt t={t} />
+    <Roadmap t={t} />
+</DefaultLayout>

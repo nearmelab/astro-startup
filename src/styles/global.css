@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@variant dark (false);
+
+@plugin "daisyui" {
+    themes: light --default
+}
+
+@theme {
+    --font-sans: 'IBM Plex Sans Arabic', sans-serif;
+
+    /* Primary Colors */
+    --color-primary: oklch(0.623 0.214 259.815);
+    --color-primary-hover: oklch(0.586 0.233 256.802);
+
+    /* Dark Theme */
+    --color-dark-bg: oklch(0.195 0 0);
+    --color-dark-card: oklch(0.251 0 0);
+    --color-dark-border: oklch(0.321 0 0);
+    --color-light-text: oklch(0.971 0 0);
+    --color-medium-text: oklch(0.723 0 0);
+
+    /* Light Theme */
+    --color-light-bg: oklch(0.971 0 0);
+    --color-light-card: oklch(1 0 0);
+    --color-light-border: oklch(0.921 0 0);
+    --color-dark-text: oklch(0.251 0 0);
+    --color-medium-text-light: oklch(0.447 0 0);
+
+    /* Brand Colors */
+    --color-brand-blue: oklch(0.518 0.219 277.117);
+    --color-brand-blue-dark: oklch(0.467 0.238 277.046);
+}

@@ -1,0 +1,22 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { languages } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+---
+
+<Layout title={t('404.title')}>
+    <div class="container mx-auto px-6 py-40 text-center">
+        <h1 class="text-5xl font-bold text-dark-text dark:text-light-text">{t('404.title')}</h1>
+        <p class="mt-4 text-xl text-medium-text-light dark:text-medium-text">{t('404.subtitle')}</p>
+        <a href={`/${lang}/`} class="mt-8 inline-block bg-primary text-white font-semibold px-6 py-3 rounded-md hover:bg-primary-dark transition-colors">
+            {t('404.link')}
+        </a>
+    </div>
+</Layout>

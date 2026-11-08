@@ -1,0 +1,116 @@
+{
+  "header": {
+    "logo_text": "Nearmelab",
+    "services": "Servicios",
+    "about": "Sobre nosotros",
+    "portfolio": "Portafolio",
+    "contact": "Contacto",
+    "hire_us": "¡Contrátanos!",
+    "blog": "Blog"
+  },
+  "footer": {
+    "description": "Construyendo herramientas inteligentes para la productividad diaria. Diseñado con la simplicidad y la privacidad en el núcleo.",
+    "resources_title": "Recursos",
+    "support_link": "Soporte y FAQ",
+    "privacy_link": "Política de Privacidad",
+    "terms_link": "Términos de Servicio",
+    "contact_title": "Contacto",
+    "contact_email": "support@nearmelab.digital",
+    "contact_location": "Ouarzazate, Marruecos",
+    "copyright": "Nearmelab © 2025. Todos los derechos reservados.",
+    "made_by": "Construido con",
+    "made_by_author": "por Tarik"
+  },
+  "hero": {
+    "title": "Nos aseguramos de que los clientes te encuentren en todas partes, desde <span class='text-primary'>Google</span> hasta <span class='text-primary'>ChatGPT</span>",
+    "subtitle": "Te ayudamos a aparecer en todos los lugares donde los clientes buscan, deslizan, desplazan, transmiten y compran.",
+    "form_title": "¿Cómo podemos ayudarte a que te encuentren?",
+    "cta_button": "Empezar",
+    "services": {
+      "ai_seo": "SEO con IA",
+      "seo": "SEO",
+      "paid_media": "Medios Pagados",
+      "creative": "Creatividad",
+      "content": "Contenido",
+      "social_media": "Redes Sociales",
+      "app_store": "Tienda de Aplicaciones",
+      "analytics": "Analítica",
+      "other": "Otro"
+    }
+  },
+  "modal": {
+    "title": "Cuéntanos sobre tu proyecto",
+    "selected_services": "Servicios Seleccionados",
+    "name": "Tu Nombre",
+    "email": "Tu Correo Electrónico",
+    "company": "Nombre de la Empresa",
+    "message": "Cuéntanos sobre tu proyecto...",
+    "message_placeholder": "Describe tus objetivos, cronograma, presupuesto y cualquier otro detalle relevante.",
+    "submit_button": "Enviar Solicitud"
+  },
+  "about": {
+    "title": "Construido por Nearmelab",
+    "image_alt": "Tarik - Fundador de Nearmelab",
+    "bio1": "Soy Tarik, un desarrollador de <strong>Ouarzazate, Marruecos</strong> que crea herramientas de navegador útiles. Calcatom es mi primera extensión, diseñada para hacer cálculos rápidos y accesibles mientras navegas.",
+    "bio2": "Ser un fundador en solitario significa que estoy involucrado en cada paso, desde el diseño inicial hasta el código final. Mi objetivo es crear la alternativa \"indie\" al software corporativo inflado."
+  },
+  "showcase": {
+    "eyebrow": "Producto Destacado",
+    "title": "Calcatom - Calculadora Rápida para Navegador",
+    "subtitle": "La extensión de calculadora ligera que has estado buscando. Sin rastreadores, sin hinchazón, solo pura utilidad directamente en la barra de herramientas de tu navegador.",
+    "image_alt": "Extensión de Navegador Calcatom",
+    "link": "Ver detalles completos del producto →"
+  },
+  "features": {
+    "item1": "Cálculos instantáneos sin cambiar de pestaña",
+    "item2": "Seguimiento del historial de tus últimas 50 ecuaciones",
+    "item3": "Funciona 100% sin conexión - siempre disponible",
+    "item4": "Centrado en la privacidad: Tus datos nunca salen de tu dispositivo"
+  },
+  "why_built": {
+    "title": "\"Por qué construí esto\"",
+    "paragraph1": "¿Cuántas veces has estado llenando un formulario en línea, calculando un presupuesto o siguiendo una receta, solo para ser interrumpido por la necesidad de un cálculo rápido?",
+    "paragraph2": "Quería algo rápido, limpio y respetuoso con mi privacidad. Así que construí Calcatom. Espero que lo encuentres tan útil como yo.",
+    "stats_title": "Estadísticas de Desarrollo"
+  },
+  "values": {
+    "simple": { "title": "Simple", "subtitle": "Sin hinchazón, solo lo que necesitas" },
+    "private": { "title": "Privado", "subtitle": "Los datos permanecen en tu dispositivo" },
+    "fast": { "title": "Rápido", "subtitle": "Construido para el rendimiento" },
+    "accessible": { "title": "Accesible", "subtitle": "Nivel gratuito para siempre" }
+  },
+  "stats": {
+    "stores": "Disponibilidad en Tiendas",
+    "coverage": "Cobertura de Pruebas",
+    "privacy": "Puntuación de Privacidad"
+  },
+  "roadmap": {
+    "title": "Lo que viene en 2025",
+    "item1": { "date": "DIC 2025", "title": "Calculadora Científica", "description": "Añadiendo funciones trigonométricas avanzadas, logaritmos y constantes para usuarios avanzados." },
+    "item2": { "date": "DIC 2025", "title": "Convertidor de Moneda", "description": "Tasas de cambio en tiempo real integradas directamente en la interfaz de la calculadora." },
+    "item3": { "date": "DIC 2025", "title": "Atajos de Teclado", "description": "Teclas de acceso rápido personalizables para que los usuarios avanzados activen la extensión y usen funciones específicas." },
+    "feedback": { "text": "¿Quieres influir en lo que construiré después? Siempre estoy escuchando.", "link": "Enviar Comentarios" }
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "web_development": {
+      "title": "Desarrollo Web",
+      "description": "Construimos sitios web rápidos, modernos y accesibles utilizando las últimas tecnologías. Desde sitios estáticos hasta aplicaciones web complejas."
+    },
+    "mobile_development": {
+      "title": "Desarrollo Móvil",
+      "description": "Creamos aplicaciones móviles hermosas y de alto rendimiento para iOS y Android. Nativas o multiplataforma, lo tenemos cubierto."
+    },
+    "ui_ux_design": {
+      "title": "Diseño UI/UX",
+      "description": "Diseñamos interfaces de usuario intuitivas y atractivas que son a la vez hermosas y fáciles de usar. Permítenos dar vida a tu visión."
+    }
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "full_name": "Nombre Completo",
+    "email": "Dirección de Correo Electrónico",
+    "message": "Tu Mensaje",
+    "submit": "Enviar Mensaje"
+  }
+}
